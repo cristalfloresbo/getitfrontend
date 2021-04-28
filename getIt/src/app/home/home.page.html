@@ -1,20 +1,61 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
+<ion-header>
+	<ion-toolbar color="tertiary">
+    	<ion-title>
+      		Get it!
+    	</ion-title>
+  	</ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content>
+	<ion-list>
+    	<ion-card *ngFor="let ad of ads">
+			<ion-item [routerLink]="['/home', ad.adId]">
+				<ion-avatar slot="start">
+				  <ion-img [src]="ad.user.photo"></ion-img>
+				</ion-avatar>
+				<ion-label>
+				  {{ ad.user.email }}
+				</ion-label>
+			</ion-item>
+      		<img [src]="ad.imageURL" alt="{{ad.title}}">
+      		<ion-card-content>
+				<ion-row>
+					<ion-col>
+						<ion-label>
+							{{ ad.postDate }}
+						</ion-label>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>
+						<ion-label>
+							{{ ad.type }}
+						</ion-label>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>
+						<ion-label>
+							{{ ad.heading }}
+						</ion-label>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>
+						<ion-label>
+							<p>{{ad.title}}</p>
+						</ion-label>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>
+			    		<ion-label>
+							{{ ad.description }}
+			  			</ion-label>
+					</ion-col>
+				</ion-row>
+      		</ion-card-content>
+			<ion-button color="medium" expand="block">Contactar</ion-button>
+    	</ion-card>
+  	</ion-list>
 </ion-content>
