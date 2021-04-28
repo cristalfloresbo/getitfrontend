@@ -13,7 +13,7 @@ export class HomePage implements OnInit {
   constructor(private adService: AdService) {}
 
   ngOnInit() {
-    this.ads = this.adService.getAll();
+    this.ads = this.adService.getAllAd();
   }
 
 }
