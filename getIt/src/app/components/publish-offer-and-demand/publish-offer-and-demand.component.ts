@@ -25,18 +25,23 @@ export class PublishOfferAndDemandComponent implements OnInit {
     this.publicationForm = this.formBuilder.group({
       typePublishing: ['', [Validators.required]],
       workAreaId: ['', [Validators.required]],
-      tariff: ['', [Validators.pattern('^[0-9]*$'), Validators.minLength(1)]],
+      tariff: ['', [Validators.pattern('^[0-9]*$'), Validators.min(1)]],
       address: ['', [ Validators.maxLength(50), Validators.minLength(10) ]],
-      timeRequiredOrOffered: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
-      description: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'),
+      timeRequiredOrOffered: ['', [ Validators.pattern('^[0-9]+$')]],
+      description: ['', [Validators.required,
+         //Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'),
       Validators.maxLength(100), Validators.minLength(10) ]]
     })
   }
+  getPublicationForm(event: Event){
+    event.preventDefault();
+    console.log(this.publicationForm.value);
+  }
 
-  public savePublication() {
-      //this.publication = this.publicationForm.controls.value;
+ // public savePublication() {
+   //   this.publication = this.publicationForm.controls.value;
 
   }
   
 
-}
+

@@ -4,5 +4,5 @@ export interface Publication {
     tariff: number;
     address: string;
     timeRequiredOrOffered: number;
-    description: number;  
+    description: String;  
 }
