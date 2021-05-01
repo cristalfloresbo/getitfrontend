@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AdService } from './ad.service';
-import { Ad } from './ad.model';
+import { ApiService } from '../../api-service/api.service';
+import { Ad } from '../../models/ad.model';
 
 @Component({
   selector: 'app-home',
@@ -10,10 +10,10 @@ import { Ad } from './ad.model';
 export class HomePage implements OnInit {
 
   ads: Ad[];
-  constructor(private adService: AdService) {}
+  constructor(private apiService: ApiService) {}
 
   ngOnInit() {
-    this.ads = this.adService.getAllAd();
+    this.ads = this.apiService.getAllAd();
   }
 
 }
