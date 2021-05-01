@@ -11,7 +11,7 @@ import { ShowAlertMessage } from "src/app/helpers/showAlertMessage";
   styleUrls: ["./publish-offer-and-demand.component.scss"],
 })
 export class PublishOfferAndDemandComponent implements OnInit {
-  // @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
+
   publicationForm: FormGroup;
   public workareas: WorkArea[] = [];
   private publication: Publication;
