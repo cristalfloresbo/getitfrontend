@@ -2,14 +2,14 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "src/environments/environment";
 import { Observable } from "rxjs";
-import data from "./ads"
-import { Ad } from "./ad.model";
+import data from "../helpers/ads"
+import { Ad } from "../models/ad.model";
 
 
 @Injectable({
   providedIn: "root"
 })
-export class AdService {
+export class ApiService {
 	ads: Ad[];
 	constructor(private http: HttpClient) {
 		this.ads = data;
@@ -39,30 +39,7 @@ export class AdService {
 		return this.http.post<any>(dir, model);
 	}
 	
-	
-	getPhotos() {
-		return this.http.get<any>('https://jsonplaceholder.typicode.com/photos?_limit=20');
-	}
-	
 	getAllAd(): Ad[] {
 		return [...this.ads];
-	}
-	
-	getAdById(id: string) {
-		return {
-			...this.ads.find(ad => {
-				return ad.adId === id;
-			})
-		};
-	}
-
-	deleteAd(id: string) {
-		this.ads = this.ads.filter(ad => {
-			return ad.adId !== id;
-		});
-	}
-	
-	postAd(ad: Ad) {
-		this.ads.push(ad);
 	}
 }
