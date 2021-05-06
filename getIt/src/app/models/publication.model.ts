@@ -4,5 +4,6 @@ export interface Publication {
     tariff: number;
     address: string;
     timeRequiredOrOffered: number;
-    description: String;  
+    description: String;
+    userId: number;
 }

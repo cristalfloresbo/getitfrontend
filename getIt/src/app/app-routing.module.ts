@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { PublishOfferAndDemandComponent } from './components/publish-offer-and-demand/publish-offer-and-demand.component';
+import { HomePage } from './pages/home/home.page';
 
 const routes: Routes = [
-  { path: "", redirectTo: "home", pathMatch: "full" },
   {
     path: 'home',
+    component: HomePage
+  },
+  {
+    path: 'new-publication',
     component: PublishOfferAndDemandComponent
   },
     {

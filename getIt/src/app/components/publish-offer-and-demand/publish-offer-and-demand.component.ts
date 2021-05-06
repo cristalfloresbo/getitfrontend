@@ -1,26 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/api-service/api.service';
 import { Publication } from 'src/app/models/publication.model';
+import { IonInfiniteScroll } from '@ionic/angular';
 
 @Component({
   selector: 'app-publish-offer-and-demand',
   templateUrl: './publish-offer-and-demand.component.html',
   styleUrls: ['./publish-offer-and-demand.component.scss']
 })
-
 export class PublishOfferAndDemandComponent implements OnInit {
 
-  private publication: Publication;
+  // @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
   publicationForm: FormGroup;
+  workareas = [];
+  private publication: Publication;
   private USER_ID = 1;
 
-  constructor(public formBuilder: FormBuilder, private apiService: ApiService) {
-
-  }
+  constructor(public formBuilder: FormBuilder, private apiService: ApiService) { }
 
   ngOnInit() {
     this.createPublicationForm();
+    this.loadWorkAreas();
+  }
+
+  async loadWorkAreas() {
+    await this.apiService.getAll('/workareas').subscribe(response => {
+      this.workareas = response
+    });
   }
 
   private createPublicationForm() {
@@ -31,20 +38,16 @@ export class PublishOfferAndDemandComponent implements OnInit {
       address: ['', [Validators.maxLength(50), Validators.minLength(10)]],
       timeRequiredOrOffered: ['', [Validators.pattern('^[0-9]+$')]],
       description: ['', [Validators.required,
-      //Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'),
       Validators.maxLength(100), Validators.minLength(10)]]
     })
   }
-  async getPublicationForm() {
-    await this.apiService.post(`/publishing/${this.USER_ID}`, this.publicationForm.value)
-      .subscribe(results => console.log(results));
-    console.log(this.publicationForm.value);
+  async savePublication() {
+    this.publication = this.publicationForm.value as Publication;
+    this.publication.userId = this.USER_ID;
+    await this.apiService.post(`/publishing`, this.publication)
+      .subscribe(results => alert(results));
   }
-
-  // public savePublication() {
-  //   this.publication = this.publicationForm.controls.value;
-
+  // toggleInfiniteScroll() {
+  //   this.infiniteScroll.disabled = !this.infiniteScroll.disabled;
+  // }
 }
-
-
-
