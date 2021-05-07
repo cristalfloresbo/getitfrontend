@@ -16,8 +16,13 @@ import { RegisterPage } from './register.page';
     ReactiveFormsModule,
     IonicModule,
     //ExploreContainerComponentModule,
-   // RegisterPageRoutingModule
-    
+   //RegisterPageRoutingModule,
+    RouterModule.forChild([
+      {
+        path: '',
+        component: RegisterPage
+      }
+    ])
 
   ],
   declarations: [RegisterPage]

@@ -11,9 +11,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PublishOfferAndDemandComponent } from './components/publish-offer-and-demand/publish-offer-and-demand.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RegisterPage } from './register/register.page';
 
 @NgModule({
-  declarations: [AppComponent, PublishOfferAndDemandComponent],
+  declarations: [AppComponent, PublishOfferAndDemandComponent, RegisterPage],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, ReactiveFormsModule],
   providers: [
