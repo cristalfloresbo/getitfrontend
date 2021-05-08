@@ -1,6 +1,6 @@
 <ion-header>
 	<ion-toolbar color="tertiary">
-    	<ion-title>
+    	<ion-title size="large">
       		Get it!
     	</ion-title>
   	</ion-toolbar>
@@ -8,42 +8,30 @@
 
 <ion-content>
 	<ion-list>
-    	<ion-card *ngFor="let ad of ads">
-			<ion-item [routerLink]="['/home', ad.adId]">
+    	<ion-card *ngFor="let ad of ad$| async">
+			<ion-item [routerLink]="['/', ad.user.id]">
 				<ion-avatar slot="start">
-				  <ion-img [src]="ad.user.photo"></ion-img>
+					<ion-img src="https://www.shankarainfra.com/img/avatar.png"></ion-img>
 				</ion-avatar>
 				<ion-label>
 				  {{ ad.user.email }}
 				</ion-label>
 			</ion-item>
-      		<img [src]="ad.imageURL" alt="{{ad.title}}">
-      		<ion-card-content>
+			<img src="https://atasouthport.com/wp-content/uploads/2017/04/default-image-620x600.jpg" alt="Default">
+			<ion-card-title></ion-card-title>
+			<ion-card-subtitle></ion-card-subtitle>
+			<ion-card-content>
 				<ion-row>
 					<ion-col>
 						<ion-label>
-							{{ ad.postDate }}
+							{{ ad.createdAt }}
 						</ion-label>
 					</ion-col>
 				</ion-row>
 				<ion-row>
 					<ion-col>
 						<ion-label>
-							{{ ad.type }}
-						</ion-label>
-					</ion-col>
-				</ion-row>
-				<ion-row>
-					<ion-col>
-						<ion-label>
-							{{ ad.heading }}
-						</ion-label>
-					</ion-col>
-				</ion-row>
-				<ion-row>
-					<ion-col>
-						<ion-label>
-							<p>{{ad.title}}</p>
+							{{ ad.workAreaName }}
 						</ion-label>
 					</ion-col>
 				</ion-row>
@@ -54,8 +42,38 @@
 			  			</ion-label>
 					</ion-col>
 				</ion-row>
+				<ion-row>
+					<ion-col>
+						<ion-label>
+							<p>Bs {{ad.fee}}</p>
+						</ion-label>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>
+						<ion-label>
+							<p>{{ad.address}}</p>
+						</ion-label>
+					</ion-col>
+				</ion-row>
       		</ion-card-content>
 			<ion-button color="medium" expand="block">Contactar</ion-button>
     	</ion-card>
   	</ion-list>
 </ion-content>
+
+<ion-footer>
+	<ion-toolbar>
+    	<ion-buttons>
+			<ion-button (click)="onClick()">
+				<ion-icon slot="icon-only" name="home"></ion-icon>
+			</ion-button>
+			<ion-button (click)="onClick()">
+				<ion-icon slot="icon-only" name="add"></ion-icon>
+			</ion-button>
+			<ion-button (click)="onClick()">
+				<ion-icon slot="icon-only" name="search"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+  	</ion-toolbar>
+</ion-footer>
