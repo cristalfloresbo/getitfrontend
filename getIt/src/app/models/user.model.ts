@@ -1,12 +1,12 @@
+import { WorkArea } from './workArea.model';
+
 export interface User {
-    userId: string;
+    Id: number;
     firstname: string;
     lastname: string;
+	phone: string;
 	bithdate: string;
 	address: string;
-	phone: string;
-	score: number;
+	workArea: WorkArea;
 	email: string;
-	password: string;
-	photo: string;
 }
