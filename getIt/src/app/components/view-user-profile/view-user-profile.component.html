@@ -1,0 +1,56 @@
+<ion-header>
+	<ion-toolbar color="tertiary">
+    	<ion-title>
+      		Get it!
+    	</ion-title>
+  	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="email">
+    <ion-avatar class="profile-photo">
+      <img src="/assets/img/profile-photo.jpg">
+    </ion-avatar>
+    <b>{{user?.email}}</b>
+  </div>
+  <div class="personal-information">
+    <p>Nombres y Apellidos: {{user?.firstname}} {{user?.lastname}}</p>
+    <p>Contacto: {{user?.phone}}</p>
+    <p>Edad: {{age}}</p>
+    <p>Dirección: {{user?.address}}</p>
+  </div>
+  <div class="rating">  
+    <ion-icon name="star" size="large" color="tertiary"></ion-icon>
+    <ion-icon name="star" size="large" color="tertiary"></ion-icon>
+    <ion-icon name="star" size="large" color="tertiary"></ion-icon>
+    <ion-icon name="star" size="large" color="tertiary"></ion-icon>
+    <ion-icon name="star" size="large" color="tertiary"></ion-icon>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" no-padding no-margin *ngFor="let image of images;">
+        <ion-card>
+          <ion-img src="/assets/image2.jpg"></ion-img>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-tabs class="navbar">
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="home" routerLink="/home">
+        <ion-icon name="home"></ion-icon>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="add" routerLink="/new-publication">
+        <ion-icon name="add"></ion-icon>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="search">
+        <ion-icon name="search"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>
+

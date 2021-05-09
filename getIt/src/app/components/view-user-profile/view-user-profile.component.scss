@@ -1,0 +1,40 @@
+.email {
+    text-align: center;
+}
+
+.profile-photo {
+    margin:10% auto;
+    width: 150px;
+    height: 150px;
+}
+.personal-information {
+   // padding: 40px;
+    padding-left: 9%;
+}
+.image-container {
+    background-size: cover;
+    min-height: 200px;
+}
+
+.toolbar {
+    color: #3730A3;
+}
+
+.navbar {
+    position: absolute;
+    border: 2px solid #E5E5E5;
+}
+
+.rating {
+    padding: 1%;
+    margin: 5%;
+    text-align: center;
+    border: 2px solid #E5E5E5;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.info {
+    padding-top: 10px;
+    margin-top: 20px;
+}

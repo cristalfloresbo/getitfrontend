@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -12,9 +12,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { PublishOfferAndDemandComponent } from './components/publish-offer-and-demand/publish-offer-and-demand.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomePage } from './pages/home/home.page';
+import { ViewUserProfileComponent } from './components/view-user-profile/view-user-profile.component';
+import { TabBarComponent } from './components/tab-bar/tab-bar.component';
 
 @NgModule({
-  declarations: [AppComponent, HomePage, PublishOfferAndDemandComponent],
+  declarations: [AppComponent, HomePage, PublishOfferAndDemandComponent, ViewUserProfileComponent, TabBarComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, ReactiveFormsModule],
   providers: [
