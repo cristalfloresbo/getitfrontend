@@ -1,11 +1,3 @@
-<ion-header>
-	<ion-toolbar color="tertiary">
-		<ion-title size="large">
-			  Get it!
-		</ion-title>
-	  </ion-toolbar>
-</ion-header>
-  
 <ion-content>
 	<ion-list>
     	<ion-card *ngFor="let ad of ad$| async">
@@ -61,19 +53,21 @@
     	</ion-card>
   	</ion-list>
 </ion-content>
-
 <ion-footer>
 	<ion-toolbar>
-    	<ion-buttons>
-			<ion-button (click)="onClick()">
+		<ion-buttons>
+			<ion-button (click)="goHome()">
 				<ion-icon slot="icon-only" name="home"></ion-icon>
 			</ion-button>
-			<ion-button (click)="onClick()">
+			<ion-button (click)="addNewPublication()">
 				<ion-icon slot="icon-only" name="add"></ion-icon>
 			</ion-button>
 			<ion-button (click)="onClick()">
 				<ion-icon slot="icon-only" name="search"></ion-icon>
 			</ion-button>
+			<ion-button (click)="register()">
+				<ion-icon name="person"></ion-icon>
+			</ion-button>
 		</ion-buttons>
-  	</ion-toolbar>
+	  </ion-toolbar>
 </ion-footer>

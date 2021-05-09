@@ -17,6 +17,17 @@ export class HomePage implements OnInit {
 	
 	ngOnInit() {
 		this.ad$ = this.apiService.getAll<Ad[]>("publications");
-  }
+	}
 
+	addNewPublication() {
+		this.router.navigate(['/new-publication']);
+	}
+
+	register() {
+		this.router.navigate(['/register']);
+	}
+
+	goHome() {
+		this.router.navigate(['/']);
+	}
 }
