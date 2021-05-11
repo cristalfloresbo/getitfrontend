@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterPage } from './register.page';
+
+import { ModalPage } from '../modal/modal.page';
 //import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 //import { RegisterPageRoutingModule } from './register-routing.module';
@@ -25,6 +27,9 @@ import { RegisterPage } from './register.page';
     ])
 
   ],
-  declarations: [RegisterPage]
+  declarations: [RegisterPage, ModalPage],
+  entryComponents:[
+    ModalPage
+  ]
 })
 export class RegisterPageModule {}

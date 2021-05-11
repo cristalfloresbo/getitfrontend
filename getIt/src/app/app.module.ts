@@ -12,10 +12,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { PublishOfferAndDemandComponent } from './components/publish-offer-and-demand/publish-offer-and-demand.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterPage } from './register/register.page';
+import { ModalPage } from './modal/modal.page';
 
 @NgModule({
-  declarations: [AppComponent, PublishOfferAndDemandComponent, RegisterPage],
-  entryComponents: [],
+  declarations: [AppComponent, PublishOfferAndDemandComponent, RegisterPage, ModalPage],
+  entryComponents: [ModalPage],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, ReactiveFormsModule],
   providers: [
     StatusBar,

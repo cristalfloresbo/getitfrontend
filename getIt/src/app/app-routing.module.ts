@@ -20,6 +20,12 @@ const routes: Routes = [
     component: RegisterPage 
 
   },
+  
+  {
+    path: 'modal',
+    loadChildren: () => import('./modal/modal.module').then( m => m.ModalPageModule)
+  },
+
 ];
 
 @NgModule({

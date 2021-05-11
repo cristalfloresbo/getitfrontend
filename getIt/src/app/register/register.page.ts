@@ -3,8 +3,10 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { ApiService } from '../api-service/api.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import {ModalController, NavController} from '@ionic/angular';
 
-
+import {ModalPage} from '../modal/modal.page';
+ 
 @Component({
   selector: 'app-register',
   templateUrl: 'register.page.html',
@@ -13,7 +15,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class RegisterPage {
   defaultDate = "2002-01-01";
 
-  constructor(public formBuilder: FormBuilder, private apiService: ApiService) {}
+  constructor(public formBuilder: FormBuilder, public modalController: ModalController, public navController: NavController, private apiService: ApiService) {}
     
   user = this.formBuilder.group({
     firsname: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
@@ -43,6 +45,12 @@ export class RegisterPage {
     this.user.get('birthdate').setValue(date, {
       onlyself: true
     })
+  }
+  async openModal() {
+    let modal = await this.modalController.create({
+      component: ModalPage,
+    });
+    return await modal.present();
   }
 
 }
