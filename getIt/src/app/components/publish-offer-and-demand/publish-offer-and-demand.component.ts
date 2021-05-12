@@ -4,6 +4,7 @@ import { ApiService } from "src/app/api-service/api.service";
 import { Publication } from "src/app/models/publication.model";
 import { WorkArea } from "src/app/models/workArea.model";
 import { ShowAlertMessage } from "src/app/helpers/showAlertMessage";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-publish-offer-and-demand",
@@ -18,10 +19,7 @@ export class PublishOfferAndDemandComponent implements OnInit {
   private USER_ID = 1;
   private showMessage = new ShowAlertMessage();
 
-  constructor(
-    public formBuilder: FormBuilder,
-    private apiService: ApiService
-  ) {}
+  constructor(public formBuilder: FormBuilder, private apiService: ApiService, private route: Router) { }
 
   ngOnInit() {
     this.createPublicationForm();
@@ -36,6 +34,15 @@ export class PublishOfferAndDemandComponent implements OnInit {
       });
   }
 
+  public isInvalid(formControlName: string) {
+    let control = this.publicationForm.controls[formControlName];
+    return !control.valid && (control.dirty || control.touched);
+  }
+  
+  public hasErrorControl(formControlName, errorType) {
+    return this.publicationForm.controls[formControlName].errors[errorType];
+  }
+  
   private createPublicationForm() {
     this.publicationForm = this.formBuilder.group({
       typePublishing: ["", [Validators.required]],
