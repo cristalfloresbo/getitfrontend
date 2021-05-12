@@ -1,114 +1,95 @@
-<!-- <ion-content class="ion-padding"> -->
-  <ion-grid>
-    <ion-row>
-      <ion-toolbar>
-        <ion-col>
-          <ion-title class='ion-text-center' size="large" type="submit" expand="block">Publicar</ion-title>
-        </ion-col>
-      </ion-toolbar>
-    </ion-row>
-    <form [formGroup]="publicationForm" (ngSubmit)="savePublication()" novalidate>
-
-      <ion-item lines="full">
-        <ion-label position="floating">
-          Tipo<ion-text color="purple">*</ion-text>
-        </ion-label>
-        <ion-select formControlName="typePublishing" okText="Aceptar" cancelText="Cancelar">
-          <ion-select-option value="OFFER">Oferta</ion-select-option>
-          <ion-select-option value="DEMAND">Demanda</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <ion-label color="danger" *ngIf="isInvalid('typePublishing')">
-        <h6 *ngIf="hasErrorControl('typePublishing', 'required')">Este campo es requerido</h6>
-      </ion-label>
-
-      <ion-item lines="full">
-        <ion-label position="floating">
-          Área de trabajo<ion-text color="purple">*</ion-text>
-        </ion-label>
-        <ion-select formControlName="workAreaId" okText="Aceptar" cancelText="Cancelar">
-          <ion-select-option *ngFor="let workarea of workareas" value={{workarea.id}}>
-            {{workarea.name}}
-          </ion-select-option>
-        </ion-select>
-      </ion-item>
-      <ion-label color="danger" *ngIf="isInvalid('workAreaId')">
-        <h6 *ngIf="hasErrorControl('workAreaId', 'required')">Este campo es requerido </h6>
-      </ion-label>
-
-      <ion-item lines="full">
-        <ion-label position="floating">Dirección</ion-label>
-        <ion-input formControlName="address" type="text" clearInput></ion-input>
-      </ion-item>
-      <ion-label color="danger" *ngIf="isInvalid('address')">
-        <h6 *ngIf="hasErrorControl('address', 'minlength')">
-          Debe ser mínimo de 10 caracteres
-        </h6>
-        <h6 *ngIf="hasErrorControl('address', 'maxlength')">
-          Debe ser máximo de 50 caracteres
-        </h6>
-      </ion-label>
-
-      <ion-item lines="full">
-        <ion-label position="floating">Tiempo Requerido/Ofertado(Días)</ion-label>
-        <ion-input formControlName="timeRequiredOrOffered" type="number"></ion-input>
-      </ion-item>
-      <ion-label color="danger" *ngIf="isInvalid('timeRequiredOrOffered')">
-        <h6 *ngIf="hasErrorControl('timeRequiredOrOffered', 'min')">
-          Debe ser mínimo 1 día
-        </h6>
-      </ion-label>
-
-      <ion-item lines="full">
-        <ion-label position="floating">Honorario</ion-label>
-        <ion-input formControlName="tariff" type="number"></ion-input>
-      </ion-item>
-      <ion-label color="danger" *ngIf="isInvalid('tariff')">
-        <h6 *ngIf="hasErrorControl('tariff', 'min')">Debe ser un número positvo</h6>
-      </ion-label>
-
-      <ion-item>
-        <ion-label position="floating">
-          Descripción<ion-text color="purple">*</ion-text>
-        </ion-label>
-        <ion-textarea formControlName="descripcion" clearInput></ion-textarea>
-      </ion-item>
-      <ion-label color="danger" *ngIf="isInvalid('descripcion')">
-        <h6 *ngIf="hasErrorControl('descripcion', 'required')">Este campo es requerido</h6>
-        <h6 *ngIf="hasErrorControl('descripcion', 'minlength')">
-          Debe ser mínimo de 10 caracteres
-        </h6>
-        <h6 *ngIf="hasErrorControl('descripcion', 'maxlength')">
-          Debe ser máximo de 50 caracteres
-        </h6>
-      </ion-label>
-
-      <section>
-        <header>Block Width</header>
-        <ion-button expand="block">A block button</ion-button>
-      </section>
-    </form>
-
-    <ion-row>
+<ion-content class="ion-padding">
+  <ion-row>
+    <ion-toolbar>
       <ion-col>
-        <ion-button expand="block" color="btn-cancel">Cancelar</ion-button>
+        <ion-title class='ion-text-center' size="large" type="submit" expand="block">Publicar</ion-title>
       </ion-col>
-      <ion-col>
-        <ion-button expand="block" color="purple" type="submit" [disabled]="!publicationForm.valid">
-          Aceptar
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+    </ion-toolbar>
+  </ion-row>
+  <form [formGroup]="publicationForm" (ngSubmit)="savePublication()" novalidate>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-button color="secondary" expand="block" type="submit">Cancelar</ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button color="primary" expand="block" type="submit">Aceptar</ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-<!-- </ion-content> -->
+    <ion-item lines="full">
+      <ion-label position="floating">
+        Tipo<ion-text color="purple">*</ion-text>
+      </ion-label>
+      <ion-select formControlName="typePublishing" okText="Aceptar" cancelText="Cancelar">
+        <ion-select-option value="OFFER">Oferta</ion-select-option>
+        <ion-select-option value="DEMAND">Demanda</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-label color="danger" *ngIf="isInvalid('typePublishing')">
+      <h6 *ngIf="hasErrorControl('typePublishing', 'required')">Este campo es requerido</h6>
+    </ion-label>
+
+    <ion-item lines="full">
+      <ion-label position="floating">
+        Área de trabajo<ion-text color="purple">*</ion-text>
+      </ion-label>
+      <ion-select formControlName="workAreaId" okText="Aceptar" cancelText="Cancelar">
+        <ion-select-option *ngFor="let workarea of workareas" value={{workarea.id}}>
+          {{workarea.name}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-label color="danger" *ngIf="isInvalid('workAreaId')">
+      <h6 *ngIf="hasErrorControl('workAreaId', 'required')">Este campo es requerido </h6>
+    </ion-label>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Dirección</ion-label>
+      <ion-input formControlName="address" type="text" clearInput></ion-input>
+    </ion-item>
+    <ion-label color="danger" *ngIf="isInvalid('address')">
+      <h6 *ngIf="hasErrorControl('address', 'minlength')">
+        Debe ser mínimo de 10 caracteres
+      </h6>
+      <h6 *ngIf="hasErrorControl('address', 'maxlength')">
+        Debe ser máximo de 50 caracteres
+      </h6>
+    </ion-label>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Tiempo Requerido/Ofertado(Días)</ion-label>
+      <ion-input formControlName="timeRequiredOrOffered" type="number"></ion-input>
+    </ion-item>
+    <ion-label color="danger" *ngIf="isInvalid('timeRequiredOrOffered')">
+      <h6 *ngIf="hasErrorControl('timeRequiredOrOffered', 'min')">
+        Debe ser mínimo 1 día
+      </h6>
+    </ion-label>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Honorario</ion-label>
+      <ion-input formControlName="tariff" type="number"></ion-input>
+    </ion-item>
+    <ion-label color="danger" *ngIf="isInvalid('tariff')">
+      <h6 *ngIf="hasErrorControl('tariff', 'min')">Debe ser un número positvo</h6>
+    </ion-label>
+
+    <ion-item>
+      <ion-label position="floating">
+        Descripción<ion-text color="purple">*</ion-text>
+      </ion-label>
+      <ion-textarea formControlName="descripcion" clearInput></ion-textarea>
+    </ion-item>
+    <ion-label color="danger" *ngIf="isInvalid('descripcion')">
+      <h6 *ngIf="hasErrorControl('descripcion', 'required')">Este campo es requerido</h6>
+      <h6 *ngIf="hasErrorControl('descripcion', 'minlength')">
+        Debe ser mínimo de 10 caracteres
+      </h6>
+      <h6 *ngIf="hasErrorControl('descripcion', 'maxlength')">
+        Debe ser máximo de 50 caracteres
+      </h6>
+    </ion-label>
+  </form>
+  <ion-row>
+    <ion-col>
+      <ion-button expand="block" color="btn-cancel">Cancelar</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button expand="block" color="purple" type="submit" [disabled]="!publicationForm.valid">
+        Aceptar
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>
