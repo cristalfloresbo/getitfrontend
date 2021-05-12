@@ -23,12 +23,16 @@ export class PublishOfferAndDemandComponent implements OnInit {
     this.loadWorkAreas();
   }
 
+  public goToHome() {
+    this.route.navigate(['/home']);
+  }
+
   public async savePublication() {
     this.publication = this.publicationForm.value as Publication;
     this.publication.userId = this.USER_ID;
     await this.apiService.post(`/publishing`, this.publication)
       .subscribe(
-        data => this.route.navigate(['/home']),
+        data => this.goToHome(),
         error => alert(error)
       );
   }
