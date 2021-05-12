@@ -84,7 +84,7 @@
   </form>
   <ion-row>
     <ion-col>
-      <ion-button expand="block" color="btn-cancel">Cancelar</ion-button>
+      <ion-button expand="block" color="btn-cancel" (click)="goToHome()">Cancelar</ion-button>
     </ion-col>
     <ion-col>
       <ion-button expand="block" color="purple" type="submit" [disabled]="!publicationForm.valid">
