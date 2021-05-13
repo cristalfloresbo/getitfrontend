@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {ModalController} from '@ionic/angular';
 
-//import {RegisterPage} from '../register/register';
+//import {RegisterPage} from '../register/register.page';
 
 
 @Component({
@@ -11,7 +12,7 @@ import {ModalController} from '@ionic/angular';
 })
 export class ModalPage implements OnInit {
 
-  constructor( public modalController:ModalController) { }
+  constructor( public modalController:ModalController, private router: Router) { }
 
   ngOnInit() {
   }
@@ -21,7 +22,8 @@ export class ModalPage implements OnInit {
     this.modalController.dismiss();
   }
 
-  //reload() {
-    //this.navController.push(RegisterPage);
-  //}
+  reload() {
+    this.router.navigateByUrl('/RegisterPage');
+    this.modalController.dismiss();
+  }
 }

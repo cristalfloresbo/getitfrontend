@@ -18,11 +18,11 @@ export class RegisterPage {
   constructor(public formBuilder: FormBuilder, public modalController: ModalController, public navController: NavController, private apiService: ApiService) {}
     
   user = this.formBuilder.group({
-    firsname: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
-    lastname: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
-    phone: ['', [Validators.required, Validators.minLength(32)]],
-    birthdate: [this.defaultDate, [Validators.required, Validators.minLength(4)]],
-    address: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(150)]],
+    firsname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+    lastname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+    phone: ['', [Validators.required, Validators.minLength(8)]],
+    birthdate: [this.defaultDate, [Validators.required]],
+    address: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(50)]],
     idWorkArea: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
     password: ['', [Validators.required, Validators.minLength(8),Validators.pattern(/^(?=\D*\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{8,30}$/)]],
