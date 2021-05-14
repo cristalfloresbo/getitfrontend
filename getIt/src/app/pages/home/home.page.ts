@@ -30,4 +30,8 @@ export class HomePage implements OnInit {
 	goHome() {
 		this.router.navigate(['/']);
 	}
+
+	searchUser(){
+		this.router.navigate(['search-user-by-email']);
+	}
 }

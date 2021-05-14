@@ -10,3 +10,14 @@ export interface User {
 	workArea: WorkArea;
 	email: string;
 }
+
+export interface Users {
+    Id: number;
+    firstname: string;
+    lastname: string;
+	phone: string;
+	bithdate: string;
+	address: string;
+	workAreaId: number;
+	email: string;
+}

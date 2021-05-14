@@ -4,7 +4,6 @@ import { ApiService } from "src/app/api-service/api.service";
 import { Publication } from "src/app/models/publication.model";
 import { WorkArea } from "src/app/models/workArea.model";
 import { ShowAlertMessage } from "src/app/helpers/showAlertMessage";
-import { IonInfiniteScroll } from "@ionic/angular";
 
 @Component({
   selector: "app-publish-offer-and-demand",
@@ -31,7 +30,7 @@ export class PublishOfferAndDemandComponent implements OnInit {
 
   async loadWorkAreas() {
     await this.apiService
-      .getAll<WorkArea[]>("/workareas")
+      .getAll<WorkArea[]>("workareas")
       .subscribe((response) => {
         this.workareas = response;
       });
@@ -66,9 +65,6 @@ export class PublishOfferAndDemandComponent implements OnInit {
         );
       });
   }
-  // toggleInfiniteScroll() {
-  //   this.infiniteScroll.disabled = !this.infiniteScroll.disabled;
-  // }
 
   private cancel(): void {
     this.showMessage.showCancelAlert(
