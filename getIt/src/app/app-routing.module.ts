@@ -5,18 +5,18 @@ import { HomePage } from './pages/home/home.page';
 
 const routes: Routes = [
   {
-    path: 'home',
-    component: HomePage
-  },
-  {
     path: 'new-publication',
     component: PublishOfferAndDemandComponent
   },
     {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'tab/home',
     pathMatch: 'full'
   },
+  {
+    path: 'tab',
+    loadChildren: () => import('./pages/tab/tab.module').then( m => m.TabPageModule)
+  }
 ];
 
 @NgModule({

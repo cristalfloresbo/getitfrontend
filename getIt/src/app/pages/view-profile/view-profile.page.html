@@ -1,0 +1,31 @@
+<ion-content>
+  <div class="email">
+    <ion-avatar class="profile-photo">
+      <img src="/assets/img/profile-photo.jpg">
+    </ion-avatar>
+    <b>{{user?.email}}</b>
+  </div>
+  <div class="personal-information">
+    <p>Nombres y Apellidos: {{user?.firstname}} {{user?.lastname}}</p>
+    <p>Contacto: {{user?.phone}}</p>
+    <p>Edad: {{age}}</p>
+    <p>Dirección: {{user?.address}}</p>
+  </div>
+  <div class="rating">  
+    <ion-icon name="star" size="large" color="primary"></ion-icon>
+    <ion-icon name="star" size="large" color="primary"></ion-icon>
+    <ion-icon name="star" size="large" color="primary"></ion-icon>
+    <ion-icon name="star" size="large" color="primary"></ion-icon>
+    <ion-icon name="star" size="large" color="primary"></ion-icon>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" no-padding no-margin *ngFor="let image of images;">
+        <ion-card>
+          <ion-img src="/assets/img/image2.jpg"></ion-img>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
