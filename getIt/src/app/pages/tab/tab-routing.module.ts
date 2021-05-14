@@ -20,6 +20,10 @@ const routes: Routes = [
       {
         path: 'home',
         loadChildren: () => import('../../pages/home/home.module').then(m => m.HomePageModule)
+      },
+      {
+        path: 'search-by-email',
+        loadChildren: () => import('../../pages/search-by-email/search-by-email.module').then( m => m.SearchByEmailPageModule)
       }
     ]
   }

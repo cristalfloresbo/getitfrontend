@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { PublishOfferAndDemandComponent } from './components/publish-offer-and-demand/publish-offer-and-demand.component';
-import { HomePage } from './pages/home/home.page';
+import { RegisterUserComponent } from './components/register-user/register-user.component';
 
 const routes: Routes = [
   {
@@ -14,8 +14,16 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'tab',
+    path: 'getit',
     loadChildren: () => import('./pages/tab/tab.module').then( m => m.TabPageModule)
+  },
+  {
+    path: 'register',
+    component: RegisterUserComponent
+  },
+  {
+    path: 'modal',
+    loadChildren: () => import('./modals/modal/modal.module').then( m => m.ModalPageModule)
   }
 ];
 

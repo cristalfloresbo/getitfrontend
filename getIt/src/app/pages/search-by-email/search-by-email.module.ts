@@ -4,19 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { TabPageRoutingModule } from './tab-routing.module';
+import { SearchByEmailPageRoutingModule } from './search-by-email-routing.module';
 
-import { TabPage } from './tab.page';
-import { PipesModule } from 'src/app/pipes/pipes.module';
+import { SearchByEmailPage } from './search-by-email.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PipesModule,
-    TabPageRoutingModule
+    SearchByEmailPageRoutingModule
   ],
-  declarations: [TabPage]
+  declarations: [SearchByEmailPage]
 })
-export class TabPageModule {}
+export class SearchByEmailPageModule {}

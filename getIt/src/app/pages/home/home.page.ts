@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ApiService } from '../../api-service/api.service';
 import { Ad } from '../../models/ad.model';
 
@@ -9,11 +10,12 @@ import { Ad } from '../../models/ad.model';
 })
 export class HomePage implements OnInit {
 
-  ads: Ad[];
-  constructor(private apiService: ApiService) {}
+  public ad$: Observable<Ad[]>;
+
+    constructor(private apiService: ApiService) {}
 
   ngOnInit() {
-    this.ads = this.apiService.getAllAd();
+    this.ad$ = this.apiService.getAll<Ad[]>("/publications");
   }
 
 }

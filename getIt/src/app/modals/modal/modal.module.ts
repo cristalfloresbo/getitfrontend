@@ -4,19 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { TabPageRoutingModule } from './tab-routing.module';
+import { ModalPageRoutingModule } from './modal-routing.module';
 
-import { TabPage } from './tab.page';
-import { PipesModule } from 'src/app/pipes/pipes.module';
+import { ModalPage } from './modal.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PipesModule,
-    TabPageRoutingModule
+    ModalPageRoutingModule
   ],
-  declarations: [TabPage]
+  declarations: [ModalPage]
 })
-export class TabPageModule {}
+export class ModalPageModule {}
