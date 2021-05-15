@@ -35,14 +35,14 @@ export class PublishOfferAndDemandComponent implements OnInit {
   }
 
   public isInvalid(formControlName: string) {
-    let control = this.publicationForm.controls[formControlName];
+    const control = this.publicationForm.controls[formControlName];
     return !control.valid && (control.dirty || control.touched);
   }
-  
+
   public hasErrorControl(formControlName, errorType) {
     return this.publicationForm.controls[formControlName].errors[errorType];
   }
-  
+
   private createPublicationForm() {
     this.publicationForm = this.formBuilder.group({
       typePublishing: ["", [Validators.required]],
