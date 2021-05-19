@@ -11,14 +11,11 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PublishOfferAndDemandComponent } from './components/publish-offer-and-demand/publish-offer-and-demand.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HomePage } from './pages/home/home.page';
-import { SearchUserByEmailComponent } from "./components/search-user-by-email/search-user-by-email.component";
-import { PipesModule } from './pipes/pipes.module';
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, SearchUserByEmailComponent, HeaderComponent, HomePage, PublishOfferAndDemandComponent],
+  declarations: [AppComponent, RegisterComponent, HeaderComponent, PublishOfferAndDemandComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, ReactiveFormsModule, PipesModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, ReactiveFormsModule],
   providers: [
     StatusBar,
     SplashScreen,
