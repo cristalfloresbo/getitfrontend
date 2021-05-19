@@ -4,20 +4,31 @@ export interface User {
     Id: number;
     firstname: string;
     lastname: string;
-	phone: string;
-	bithdate: string;
-	address: string;
-	workArea: WorkArea;
-	email: string;
+    phone: string;
+    bithdate: string;
+    address: string;
+    workArea: WorkArea;
+    email: string;
 }
 
 export interface Users {
     Id: number;
     firstname: string;
     lastname: string;
-	phone: string;
-	bithdate: string;
-	address: string;
-	workAreaId: number;
-	email: string;
+    phone: string;
+    bithdate: string;
+    address: string;
+    workAreaId: number;
+    email: string;
+}
+
+export interface UserModel {
+    id: number;
+    firstname: string;
+    lastname: string;
+    phone: string;
+    birthdate: Date;
+    address: string;
+    workArea: WorkArea;
+    email: string;
 }

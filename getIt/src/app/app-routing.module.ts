@@ -27,6 +27,10 @@ const routes: Routes = [
     redirectTo: "home",
     pathMatch: "full",
   },
+  {
+    path: 'view-profile',
+    loadChildren: () => import('./pages/view-profile/view-profile.module').then( m => m.ViewProfilePageModule)
+  },
 
 ];
 
