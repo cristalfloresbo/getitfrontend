@@ -26,11 +26,23 @@ export class PublishOfferAndDemandComponent implements OnInit {
     this.loadWorkAreas();
   }
 
-  async loadWorkAreas() {
+  public async loadWorkAreas() {
     await this.apiService
       .getAll<WorkArea[]>("workareas")
       .subscribe((response) => {
         this.workareas = response;
+      });
+  }
+
+  public save() {
+    this.publication = this.publicationForm.value as Publication;
+    this.publication.userId = this.USER_ID;
+    this.apiService
+      .post(`/publishing`, this.publication)
+      .subscribe((results) => {
+        this.showMessage.showSuccessAlert(
+          `publication with id: ${results} registered successfully!`
+        );
       });
   }
 
@@ -43,13 +55,20 @@ export class PublishOfferAndDemandComponent implements OnInit {
     return this.publicationForm.controls[formControlName].errors[errorType];
   }
 
+  public cancel(): void {
+    this.showMessage.showCancelAlert(
+      "¿Esta seguro que no desea registrar la publicacion?",
+      ""
+    );
+  }
+
   private createPublicationForm() {
     this.publicationForm = this.formBuilder.group({
       typePublishing: ["", [Validators.required]],
       workAreaId: ["", [Validators.required]],
-      tariff: ["", [Validators.pattern("^[0-9]*$"), Validators.min(1)]],
       address: ["", [Validators.maxLength(50), Validators.minLength(10)]],
-      timeRequiredOrOffered: ["", [Validators.pattern("^[0-9]+$")]],
+      timeRequiredOrOffered: ["", [Validators.min(1)]],
+      tariff: ["", [Validators.min(1)]],
       description: [
         "",
         [
@@ -61,22 +80,4 @@ export class PublishOfferAndDemandComponent implements OnInit {
     });
   }
 
-  async savePublication() {
-    this.publication = this.publicationForm.value as Publication;
-    this.publication.userId = this.USER_ID;
-    await this.apiService
-      .post(`/publishing`, this.publication)
-      .subscribe((results) => {
-        this.showMessage.showSuccessAlert(
-          `publication with id: ${results} registered successfully!`
-        );
-      });
-  }
-
-  private cancel(): void {
-    this.showMessage.showCancelAlert(
-      "¿Esta seguro que no desea registrar la publicacion?",
-      ""
-    );
-  }
 }

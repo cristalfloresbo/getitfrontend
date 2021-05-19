@@ -6,7 +6,7 @@
       </ion-col>
     </ion-toolbar>
   </ion-row>
-  <form [formGroup]="publicationForm" (ngSubmit)="savePublication()" novalidate>
+  <form [formGroup]="publicationForm" novalidate>
 
     <ion-item lines="full">
       <ion-label position="floating">
@@ -70,24 +70,24 @@
       <ion-label position="floating">
         Descripción<ion-text color="purple">*</ion-text>
       </ion-label>
-      <ion-textarea formControlName="descripcion" clearInput></ion-textarea>
+      <ion-textarea formControlName="description" clearInput></ion-textarea>
     </ion-item>
-    <ion-label color="danger" *ngIf="isInvalid('descripcion')">
-      <h6 *ngIf="hasErrorControl('descripcion', 'required')">Este campo es requerido</h6>
-      <h6 *ngIf="hasErrorControl('descripcion', 'minlength')">
+    <ion-label color="danger" *ngIf="isInvalid('description')">
+      <h6 *ngIf="hasErrorControl('description', 'required')">Este campo es requerido</h6>
+      <h6 *ngIf="hasErrorControl('description', 'minlength')">
         Debe ser mínimo de 10 caracteres
       </h6>
-      <h6 *ngIf="hasErrorControl('descripcion', 'maxlength')">
+      <h6 *ngIf="hasErrorControl('description', 'maxlength')">
         Debe ser máximo de 50 caracteres
       </h6>
     </ion-label>
   </form>
   <ion-row>
     <ion-col>
-      <ion-button expand="block" color="btn-cancel" (click)="goToHome()">Cancelar</ion-button>
+      <ion-button expand="block" color="btn-cancel" (click)="cancel()">Cancelar</ion-button>
     </ion-col>
     <ion-col>
-      <ion-button expand="block" color="purple" type="submit" [disabled]="!publicationForm.valid">
+      <ion-button expand="block" color="purple" type="submit" (click)="save()" [disabled]="!publicationForm.valid">
         Aceptar
       </ion-button>
     </ion-col>
