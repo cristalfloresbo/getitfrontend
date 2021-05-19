@@ -12,13 +12,13 @@
       <ion-label position="floating">
         Tipo<ion-text color="purple">*</ion-text>
       </ion-label>
-      <ion-select formControlName="typePublishing" okText="Aceptar" cancelText="Cancelar">
+      <ion-select formControlName="typePublication" okText="Aceptar" cancelText="Cancelar">
         <ion-select-option value="OFFER">Oferta</ion-select-option>
         <ion-select-option value="DEMAND">Demanda</ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-label color="danger" *ngIf="isInvalid('typePublishing')">
-      <h6 *ngIf="hasErrorControl('typePublishing', 'required')">Este campo es requerido</h6>
+    <ion-label color="danger" *ngIf="isInvalid('typePublication')">
+      <h6 *ngIf="hasErrorControl('typePublication', 'required')">Este campo es requerido</h6>
     </ion-label>
 
     <ion-item lines="full">

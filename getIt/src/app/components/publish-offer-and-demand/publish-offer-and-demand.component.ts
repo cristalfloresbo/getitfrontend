@@ -64,7 +64,7 @@ export class PublishOfferAndDemandComponent implements OnInit {
 
   private createPublicationForm() {
     this.publicationForm = this.formBuilder.group({
-      typePublishing: ["", [Validators.required]],
+      typePublication: ["", [Validators.required]],
       workAreaId: ["", [Validators.required]],
       address: ["", [Validators.maxLength(50), Validators.minLength(10)]],
       timeRequiredOrOffered: ["", [Validators.min(1)]],
