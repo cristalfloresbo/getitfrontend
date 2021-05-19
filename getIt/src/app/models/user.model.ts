@@ -8,6 +8,7 @@ export interface User {
     bithdate: string;
     address: string;
     workArea: WorkArea;
+    score: number;
     email: string;
 }
 
@@ -19,6 +20,7 @@ export interface Users {
     bithdate: string;
     address: string;
     workAreaId: number;
+    score: number;
     email: string;
 }
 
@@ -30,5 +32,6 @@ export interface UserModel {
     birthdate: Date;
     address: string;
     workArea: WorkArea;
+    score: number;
     email: string;
 }
