@@ -1,7 +1,7 @@
 <ion-content>
 	<ion-list>
     	<ion-card *ngFor="let ad of ad$| async">
-			<ion-item [routerLink]="['/', ad.user.id]">
+			<ion-item href="getit/view-profile/{{ad.user.id}}">
 				<ion-avatar slot="start">
 					<ion-img src="https://www.shankarainfra.com/img/avatar.png"></ion-img>
 				</ion-avatar>
