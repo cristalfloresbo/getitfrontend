@@ -14,9 +14,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HomePage } from './pages/home/home.page';
 import { SearchUserByEmailComponent } from "./components/search-user-by-email/search-user-by-email.component";
 import { PipesModule } from './pipes/pipes.module';
+import { SearchAdByAddressComponent } from "./components/search-ad-by-address/search-ad-by-address.component";
+import { SearchAdByFeeComponent } from "./components/search-ad-by-fee/search-ad-by-fee.component";
+import { SearchAdByRequiredTimeComponent } from "./components/search-ad-by-required-time/search-ad-by-required-time.component";
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, SearchUserByEmailComponent, HeaderComponent, HomePage, PublishOfferAndDemandComponent],
+  declarations: [AppComponent, SearchAdByRequiredTimeComponent, SearchAdByFeeComponent, RegisterComponent, SearchAdByAddressComponent, SearchUserByEmailComponent, HeaderComponent, HomePage, PublishOfferAndDemandComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, ReactiveFormsModule, PipesModule],
   providers: [
