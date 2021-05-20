@@ -5,13 +5,23 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FiltroPipe implements PipeTransform {
 
-  	transform(values: any[], param: string, field: string): any[] {
-	  	if (param === ""){
-			return [];
+  	transform(values: any[], param: any, field: string): any[] {
+		switch(typeof(param)){
+			case "string": 
+				if (param === "") {
+					return [];
+				}
+				return values.filter((value) => {
+					return value[field].toLowerCase().includes(param.toLowerCase())
+				});
+			case "number":
+				if (param <= 0) {
+					return [];
+				}
+				return values.filter((value) => {
+					return value[field] === param
+				});
 		}
-		return values.filter((value) => {
-			return value[field].toLowerCase().includes(param.toLowerCase())
-		});
+	  	
   	}
-
 }

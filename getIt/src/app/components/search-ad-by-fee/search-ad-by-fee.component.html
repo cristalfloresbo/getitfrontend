@@ -1,7 +1,14 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>Search Ad By Fee</ion-title>
+	</ion-toolbar>
+</ion-header>
+
 <ion-content>
+	<ion-searchbar (ionChange)="search( $event )"></ion-searchbar>
 	<ion-list>
-    	<ion-card *ngFor="let ad of ad$| async">
-			<ion-item href="getit/view-profile/{{ad.user.id}}">
+    	<ion-card *ngFor="let ad of ads | filtro: txtToSearch: 'fee'">
+			<ion-item [routerLink]="['/', ad.user.id]">
 				<ion-avatar slot="start">
 					<ion-img src="https://www.shankarainfra.com/img/avatar.png"></ion-img>
 				</ion-avatar>
@@ -56,7 +63,8 @@
 					</ion-col>
 				</ion-row>
       		</ion-card-content>
-			<ion-button color="medium" expand="block" href={{ad.user.phone}}>Contactar</ion-button>
+			<ion-button color="medium" expand="block">Contactar</ion-button>
     	</ion-card>
   	</ion-list>
 </ion-content>
+

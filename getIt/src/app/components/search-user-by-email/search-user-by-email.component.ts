@@ -31,5 +31,4 @@ export class SearchUserByEmailComponent implements OnInit {
 	search(event) {
 		this.txtToSearch = event.detail.value;
 	}
-
 }
