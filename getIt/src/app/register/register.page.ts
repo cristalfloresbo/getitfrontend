@@ -4,8 +4,10 @@ import { FormBuilder } from '@angular/forms';
 import { ApiService } from '../api-service/api.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import {ModalController, NavController} from '@ionic/angular';
+//import { ShowAlertMessage } from "src/app/helpers/showAlertMessage";
 
 import {ModalPage} from '../modal/modal.page';
+import * as moment from 'moment';
  
 @Component({
   selector: 'app-register',
@@ -13,22 +15,25 @@ import {ModalPage} from '../modal/modal.page';
   styleUrls: ['register.page.scss'],
 })
 export class RegisterPage {
-  defaultDate = "2002-01-01";
+  defaultDate = "";
+  prevPhone = 'https://wa.me/591';
+  //private showMessage = new ShowAlertMessage();
 
-  constructor(public formBuilder: FormBuilder, public modalController: ModalController, public navController: NavController, private apiService: ApiService) {}
-    
-  user = this.formBuilder.group({
-    firsname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
-    lastname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
-    phone: ['', [Validators.required, Validators.minLength(8)]],
-    birthdate: [this.defaultDate, [Validators.required]],
-    address: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(50)]],
-    idWorkArea: ['', [Validators.required]],
-    email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-    password: ['', [Validators.required, Validators.minLength(8),Validators.pattern(/^(?=\D*\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{8,30}$/)]],
-  });
+    constructor(public formBuilder: FormBuilder, public modalController: ModalController,
+                public navController: NavController, private apiService: ApiService) {}
+user = this.formBuilder.group({
+      firstname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+      lastname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+      phone: [this.prevPhone + '', [Validators.required, Validators.minLength(25), Validators.maxLength(25)]],
+      birthdate: [this.defaultDate, [Validators.required]],
+      address: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(50)]],
+      workAreaid: [''],
+      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+      password: ['', [Validators.required, Validators.minLength(8),
+        Validators.pattern(/^(?=\D*\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{8,30}$/)]],
+    });
 
-  saveData(){
+  saveData() {
     this.apiService.post('/registerUser', this.user.value).subscribe(
       (idUser: number) => { 
         console.log(idUser);
@@ -51,6 +56,13 @@ export class RegisterPage {
       component: ModalPage,
     });
     return await modal.present();
+  }
+
+  private cancel(): void {
+    //this.showMessage.showCancelAlert(
+     // "¿Esta seguro que no desea registrar la publicacion?",
+     // ""
+    //);
   }
 
 }
