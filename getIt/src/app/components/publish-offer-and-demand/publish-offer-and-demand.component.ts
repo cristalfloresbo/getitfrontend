@@ -38,7 +38,7 @@ export class PublishOfferAndDemandComponent implements OnInit {
     this.publication = this.publicationForm.value as Publication;
     this.publication.userId = this.USER_ID;
     this.apiService
-      .post(`/publishing`, this.publication)
+      .post(`/publication`, this.publication)
       .subscribe((results) => {
         this.showMessage.showSuccessAlert(
           `publication with id: ${results} registered successfully!`
