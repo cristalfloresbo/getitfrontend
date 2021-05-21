@@ -9,7 +9,7 @@ import { HeaderComponent } from 'src/app/components/header/header.component';
 import { RegisterComponent } from 'src/app/components/register/register.component';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { PublishOfferAndDemandComponent } from './components/publish-offer-and-demand/publish-offer-and-demand.component';
+import { PublishOfferAndDemandComponent } from './pages/publish-offer-and-demand/publish-offer-and-demand.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({

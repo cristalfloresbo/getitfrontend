@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
-import { PublishOfferAndDemandComponent } from "./components/publish-offer-and-demand/publish-offer-and-demand.component";
+import { PublishOfferAndDemandComponent } from "./pages/publish-offer-and-demand/publish-offer-and-demand.component";
 import { RegisterComponent } from "./components/register/register.component";
 
 const routes: Routes = [
