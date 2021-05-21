@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from "src/app/api-service/api.service";
+import { WorkArea } from "src/app/models/workArea.model";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-search-ad-by-workarea',
@@ -7,8 +10,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchAdByWorkareaComponent implements OnInit {
 
-  constructor() { }
+	public workareas: WorkArea[] = [];
+	form: FormGroup;
+  
+	constructor(
+		public formBuilder: FormBuilder,
+	  	private apiService: ApiService
+	) {}
+  
+	ngOnInit() {
+		this.createForm();
+	  	this.loadWorkAreas();
+	}
 
-  ngOnInit() {}
+	async loadWorkAreas() {
+		await this.apiService
+		  .getAll<WorkArea[]>("workareas")
+		  .subscribe((response) => {
+			this.workareas = response;
+		  });
+	}
 
+	private createForm() {
+		this.form = this.formBuilder.group({
+		  workAreaId: ["", [Validators.required]],
+		});
+	}
 }
