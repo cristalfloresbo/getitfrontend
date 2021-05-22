@@ -7,12 +7,16 @@ import { SearchUserByEmailComponent } from "./components/search-user-by-email/se
 import { SearchAdByAddressComponent } from "./components/search-ad-by-address/search-ad-by-address.component";
 import { SearchAdByFeeComponent } from "./components/search-ad-by-fee/search-ad-by-fee.component";
 import { SearchAdByRequiredTimeComponent } from "./components/search-ad-by-required-time/search-ad-by-required-time.component";
-
+import { SearchAdByWorkareaComponent } from "./components/search-ad-by-workarea/search-ad-by-workarea.component";
 
 const routes: Routes = [
   {
     path: "home",
     component: HomePage,
+  },
+  {
+    path: "search-ad-by-work-area",
+    component: SearchAdByWorkareaComponent,
   },
   {
     path: "search-ad-by-address",

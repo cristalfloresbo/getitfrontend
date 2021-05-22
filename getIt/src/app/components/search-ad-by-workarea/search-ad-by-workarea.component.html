@@ -5,16 +5,14 @@
 </ion-header>
 
 <ion-content>
-	<form [formGroup]="form">
-		<ion-item lines="full">
-			<ion-label size="small">Area de trabajo</ion-label>
-			<ion-select formControlName="workAreaId" okText="Aceptar" cancelText="Cancelar">
-				<ion-select-option *ngFor="let workarea of workareas" value={{workarea.name}}>
-					{{workarea.name}}
-				</ion-select-option>
-			</ion-select>
-		</ion-item>
-	</form>
+	<ion-item lines="full">
+		<ion-label size="small">Area de trabajo</ion-label>
+		<ion-select okText="Aceptar" cancelText="Cancelar" (ionChange)="OnChange($event)">
+			<ion-select-option *ngFor="let workarea of workareas" [value]="workarea.name">
+				{{workarea.name}}
+			</ion-select-option>
+		</ion-select>
+	</ion-item>
 	<ion-list>
     	<ion-card *ngFor="let ad of ads">
 			<ion-item [routerLink]="['/', ad.user.id]">
