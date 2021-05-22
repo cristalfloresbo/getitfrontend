@@ -12,7 +12,10 @@ import { WorkArea } from "src/app/models/workArea.model";
   styleUrls: ["./register.component.scss"],
 })
 export class RegisterComponent implements OnInit {
-  public defaultDate = new Date();
+  defaultDate = "";
+  prevPhone = 'https://wa.me/591';
+  defaultNum = 0;
+  auxPhone = "";
   private showMessage = new ShowAlertMessage();
   public workareas: WorkArea[] = [];
 
@@ -26,41 +29,16 @@ export class RegisterComponent implements OnInit {
   }
 
   user = this.formBuilder.group({
-    firstname: [
-      "",
-      [Validators.required, Validators.minLength(4), Validators.maxLength(50)],
-    ],
-    lastname: [
-      "",
-      [Validators.required, Validators.minLength(4), Validators.maxLength(50)],
-    ],
-    phone: ["", [Validators.required, Validators.minLength(32)]],
-    birthdate: [
-      this.defaultDate,
-      [Validators.required, Validators.minLength(4)],
-    ],
-    address: [
-      "",
-      [Validators.required, Validators.minLength(4), Validators.maxLength(150)],
-    ],
-    workAreaId: ["", [Validators.required]],
-    email: [
-      "",
-      [
-        Validators.required,
-        Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$"),
-      ],
-    ],
-    password: [
-      "",
-      [
-        Validators.required,
-        Validators.minLength(8),
-        Validators.pattern(
-          /^(?=\D*\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{8,30}$/
-        ),
-      ],
-    ],
+    firstname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+    lastname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+    phone: ['', [Validators.required, Validators.minLength(8)]],
+    birthdate: [this.defaultDate, [Validators.required]],
+    address: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
+    workAreaid: [this.defaultNum],
+    score: [this.defaultNum],
+    email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+    password: ['', [Validators.required, Validators.minLength(8),
+      Validators.pattern(/^(?=\D*\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{8,30}$/)]],
   });
 
   async loadWorkAreas() {
@@ -72,7 +50,8 @@ export class RegisterComponent implements OnInit {
   }
 
   saveData() {
-	this.user.get("workAreaId").setValue(+this.user.get("workAreaId").value); 
+    this.createLink();
+	//this.user.get("workAreaId").setValue(+this.user.get("workAreaId").value); 
 
     this.apiService.post(`/register-user`, this.user.value).subscribe(
       (idUser: number) => {
@@ -95,9 +74,24 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  createLink() {
+    this.user.controls.phone.setValue(this.prevPhone + this.auxPhone);
+  }
+
+  clearForm() {
+    this.user.controls.firstname.setValue('');
+    this.user.controls.lastname.setValue('');
+    this.user.controls.phone.setValue('');
+    this.user.controls.birthdate.setValue('');
+    this.user.controls.address.setValue('');
+    this.user.controls.workAreaid.setValue('0');
+    this.user.controls.email.setValue('');
+    this.user.controls.password.setValue('');
+  }
+
   private cancel(): void {
     this.showMessage.showCancelAlert(
-      "¿Esta seguro que no desea registrar la publicacion?",
+      "¿Está seguro que desea cancelar su registro?",
       ""
     );
   }
