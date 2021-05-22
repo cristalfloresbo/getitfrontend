@@ -7,7 +7,7 @@
 <ion-content>
 	<ion-item lines="full">
 		<ion-label size="small">Area de trabajo</ion-label>
-		<ion-select okText="Aceptar" cancelText="Cancelar" (ionChange)="OnChange($event)">
+		<ion-select (ionChange)="OnChange($event)">
 			<ion-select-option *ngFor="let workarea of workareas" [value]="workarea.name">
 				{{workarea.name}}
 			</ion-select-option>
