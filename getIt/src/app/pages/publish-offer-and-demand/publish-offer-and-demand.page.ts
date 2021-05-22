@@ -8,10 +8,10 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: "app-publish-offer-and-demand",
-  templateUrl: "./publish-offer-and-demand.component.html",
-  styleUrls: ["./publish-offer-and-demand.component.scss"],
+  templateUrl: "./publish-offer-and-demand.page.html",
+  styleUrls: ["./publish-offer-and-demand.page.scss"],
 })
-export class PublishOfferAndDemandComponent implements OnInit {
+export class PublishOfferAndDemandPage implements OnInit {
 
   publicationForm: FormGroup;
   public workareas: WorkArea[] = [];

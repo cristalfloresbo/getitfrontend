@@ -9,11 +9,11 @@ import { HeaderComponent } from 'src/app/components/header/header.component';
 import { RegisterComponent } from 'src/app/components/register/register.component';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { PublishOfferAndDemandComponent } from './pages/publish-offer-and-demand/publish-offer-and-demand.component';
+import { PublishOfferAndDemandPage } from './pages/publish-offer-and-demand/publish-offer-and-demand.page';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, HeaderComponent, PublishOfferAndDemandComponent],
+  declarations: [AppComponent, RegisterComponent, HeaderComponent, PublishOfferAndDemandPage],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, ReactiveFormsModule],
   providers: [

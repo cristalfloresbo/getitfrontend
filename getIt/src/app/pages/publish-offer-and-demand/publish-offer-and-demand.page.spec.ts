@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { PublishOfferAndDemandComponent } from './publish-offer-and-demand.component';
+import { PublishOfferAndDemandPage } from './publish-offer-and-demand.page';
 
-describe('PublishOfferAndDemandComponent', () => {
-  let component: PublishOfferAndDemandComponent;
-  let fixture: ComponentFixture<PublishOfferAndDemandComponent>;
+describe('PublishOfferAndDemandPage', () => {
+  let component: PublishOfferAndDemandPage;
+  let fixture: ComponentFixture<PublishOfferAndDemandPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ PublishOfferAndDemandComponent ],
+      declarations: [ PublishOfferAndDemandPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(PublishOfferAndDemandComponent);
+    fixture = TestBed.createComponent(PublishOfferAndDemandPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
