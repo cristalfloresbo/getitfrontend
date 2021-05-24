@@ -13,7 +13,10 @@
 
 	<ion-header class="ion-text-center">
 		<ion-toolbar class="ion-text-center">
-			<ion-title color="dark">
+			<ion-buttons slot="start">
+				<ion-back-button defaultHref="/home"></ion-back-button>
+			</ion-buttons>
+			<ion-title class="CenterText" color="dark">
 				REGISTRARSE
 			</ion-title>
 		</ion-toolbar>
@@ -45,7 +48,7 @@
 
 		<ion-item>
 			<ion-label position="floating" >Fecha de Nacimiento * </ion-label>
-			<ion-input formControlName="birthdate"></ion-input>
+			<ion-input formControlName="birthdate" [(ngModel)]="ultDate"></ion-input>
 			<ion-input >
 			<ion-datetime (ionChange)="getDate($event)" formControlName="birthdate" [value]="defaultDate" placeholder="Presiona Aqui" doneText="Aceptar" cancelText="Cancelar"></ion-datetime></ion-input>
 		</ion-item>

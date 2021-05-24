@@ -5,6 +5,7 @@ import { ApiService } from "src/app/api-service/api.service";
 import { HttpErrorResponse } from "@angular/common/http";
 import { ShowAlertMessage } from "src/app/helpers/showAlertMessage";
 import { WorkArea } from "src/app/models/workArea.model";
+import * as moment from 'moment';
 
 @Component({
   selector: "app-register",
@@ -12,6 +13,7 @@ import { WorkArea } from "src/app/models/workArea.model";
   styleUrls: ["./register.component.scss"],
 })
 export class RegisterComponent implements OnInit {
+  ultDate = "";
   defaultDate = "";
   prevPhone = 'https://wa.me/591';
   defaultNum = 0;
@@ -34,7 +36,7 @@ export class RegisterComponent implements OnInit {
     phone: ['', [Validators.required, Validators.minLength(8)]],
     birthdate: [this.defaultDate, [Validators.required]],
     address: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
-    workAreaid: [this.defaultNum],
+    workAreaid: ['0'],
     score: [this.defaultNum],
     email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
     password: ['', [Validators.required, Validators.minLength(8),
@@ -50,6 +52,7 @@ export class RegisterComponent implements OnInit {
   }
 
   saveData() {
+    const ag = this.calAge();
     this.createLink();
 	//this.user.get("workAreaId").setValue(+this.user.get("workAreaId").value); 
 
@@ -72,6 +75,11 @@ export class RegisterComponent implements OnInit {
     this.user.get("birthdate").setValue(date, {
       onlyself: true,
     });
+  }
+
+  calAge() {
+    const age = moment(new Date()).diff(moment(this.ultDate), 'years');
+    return age;
   }
 
   createLink() {
