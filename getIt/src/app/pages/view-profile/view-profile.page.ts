@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import { ApiService } from 'src/app/api-service/api.service';
 import { ShowAlertMessage } from 'src/app/helpers/showAlertMessage';
 import { UserModel } from 'src/app/models/user.model';
+import data from "../../helpers/photos";
 
 @Component({
   selector: 'app-view-profile',
@@ -15,7 +16,7 @@ export class ViewProfilePage implements OnInit {
 
   public user: UserModel;
   public age: number;
-  public images = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  public images = data;
   public showAlertMessage = new ShowAlertMessage();
 
   constructor(private apiService: ApiService, private route: ActivatedRoute) { }

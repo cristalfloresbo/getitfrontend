@@ -11,27 +11,11 @@ import { Observable } from 'rxjs';
 })
 
 export class HomePage implements OnInit {
-	public ad$: Observable<Ad[]>;
+    public ad$: Observable<Ad[]>;
 
     constructor(private apiService: ApiService, private router: Router) {}
-	
-	ngOnInit() {
-		this.ad$ = this.apiService.getAll<Ad[]>("publications");
-	}
 
-	addNewPublication() {
-		this.router.navigate(['/new-publication']);
-	}
-
-	register() {
-		this.router.navigate(['/register']);
-	}
-
-	goHome() {
-		this.router.navigate(['/']);
-	}
-
-	searchUser(){
-		this.router.navigate(['search-user-by-email']);
-	}
+    ngOnInit() {
+      this.ad$ = this.apiService.getAll<Ad[]>("publications");
+    }
 }

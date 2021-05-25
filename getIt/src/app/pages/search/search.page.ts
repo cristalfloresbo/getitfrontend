@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import data from "../../helpers/searchOptions";
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,25 +8,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./search.page.scss'],
 })
 export class SearchPage implements OnInit {
+
+  public routes = {
+    email: 'getit/search/by-email',
+    address: 'getit/search',
+    requiredTime: 'getit/search',
+    fee: 'getit/home'
+  };
+
+  public searchOptions = data;
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
-
   public redirectTo(event: CustomEvent) {
-    if (event.detail.value === 'email') {
-      this.router.navigate(['getit/search/by-email']);
-    }
-    if (event.detail.value === 'address') {
-      this.router.navigate(['getit/seach']);
-    }
-    if (event.detail.value === 'age') {
-      this.router.navigate(['getit/seach']);
-    }
-    if (event.detail.value === 'fee') {
-      this.router.navigate(['getit/home']);
-    }
+    this.router.navigate([this.routes[event.detail.value]]);
   }
 
 }

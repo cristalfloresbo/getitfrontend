@@ -1,10 +1,8 @@
 <ion-content>
   <ion-item>
+    <ion-label>Buscar por: </ion-label>
     <ion-select (ionChange)="redirectTo($event)" okText="Aceptar" cancelText="Cancelar">
-      <ion-select-option value="email">Email</ion-select-option>
-      <ion-select-option value="address">Ubicación</ion-select-option>
-      <ion-select-option value="age">Edad</ion-select-option>
-      <ion-select-option value="fee">Honorarios</ion-select-option>
+      <ion-select-option *ngFor="let option of searchOptions" value={{option.value}}>{{option.name}}</ion-select-option>
     </ion-select>
   </ion-item>
 </ion-content>
