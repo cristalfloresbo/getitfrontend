@@ -1,7 +1,7 @@
 <ion-content>
 	<ion-list>
     	<ion-card *ngFor="let ad of ad$| async">
-			<ion-item [routerLink]="['/', ad.user.id]">
+			<ion-item href="getit/view-profile/{{ad.user.id}}">
 				<ion-avatar slot="start">
 					<ion-img src="https://www.shankarainfra.com/img/avatar.png"></ion-img>
 				</ion-avatar>
@@ -49,25 +49,7 @@
 					</ion-col>
 				</ion-row>
       		</ion-card-content>
-			<ion-button color="medium" expand="block">Contactar</ion-button>
+			<ion-button color="medium" expand="block" href={{ad.user.phone}}>Contactar</ion-button>
     	</ion-card>
   	</ion-list>
 </ion-content>
-<ion-footer>
-	<ion-toolbar>
-		<ion-buttons>
-			<ion-button (click)="goHome()">
-				<ion-icon slot="icon-only" name="home"></ion-icon>
-			</ion-button>
-			<ion-button (click)="addNewPublication()">
-				<ion-icon slot="icon-only" name="add"></ion-icon>
-			</ion-button>
-			<ion-button (click)="searchUser()">
-				<ion-icon slot="icon-only" name="search"></ion-icon>
-			</ion-button>
-			<ion-button (click)="register()">
-				<ion-icon name="person"></ion-icon>
-			</ion-button>
-		</ion-buttons>
-	  </ion-toolbar>
-</ion-footer>
