@@ -14,8 +14,7 @@ const routes: Routes = [
       },
       {
         path: 'publish',
-        // tslint:disable-next-line:max-line-length
-        loadChildren: () => import('../../components/publish-offer-and-demand/publish-offer-and-demand.component').then(m => m.PublishOfferAndDemandComponent)
+        loadChildren: () => import('../../pages/publish-offer-and-demand/publish-offer-and-demand.module').then(m => m.PublishOfferAndDemandPageModule)
       },
       {
         path: 'home',
