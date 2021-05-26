@@ -53,21 +53,32 @@ export class RegisterComponent implements OnInit {
 
   saveData() {
     const ag = this.calAge();
-    this.createLink();
-	//this.user.get("workAreaId").setValue(+this.user.get("workAreaId").value); 
+    if (ag >= 18) {
+      this.createLink();
+      console.log('La edad es' + ' ' + ag);
+      console.log(this.user.value);
+	  //this.user.get("workAreaId").setValue(+this.user.get("workAreaId").value); 
 
-    this.apiService.post(`/register-user`, this.user.value).subscribe(
-      (idUser: number) => {
-        this.showMessage.showSuccessAlert(
-          `user with id: ${idUser} registered successfully!`
-        );
-      },
-      (error: HttpErrorResponse) => {
-        this.showMessage.showErrorAlert(
-			`Ha ocurrido un error: ${error.message}, vuelva a intentarlo`
-        );
-      }
-    );
+      this.apiService.post(`/register-user`, this.user.value).subscribe(
+        (idUser: number) => {
+          this.showMessage.showSuccessAlert(
+            `user with id: ${idUser} registered successfully!`
+         );
+        },
+        (error: HttpErrorResponse) => {
+         this.showMessage.showErrorAlert(
+			  `Ha ocurrido un error: ${error.message}, vuelva a intentarlo`
+         );
+       }
+      );
+    } else {
+      this.showMessage.showError(
+			  `No puedes registrarte no cumples con la edad necesaria`
+         );
+      console.log('No puedes registrarte no cumples con la edad necesaria' + 'tu edad es:' + ag);
+      console.log(this.user.value);
+    }
+
   }
 
   getDate(e) {
