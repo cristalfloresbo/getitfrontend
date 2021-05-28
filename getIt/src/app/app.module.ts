@@ -7,6 +7,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { HeaderComponent } from 'src/app/components/header/header.component';
 import { RegisterComponent } from 'src/app/components/register/register.component';
+import { LoginComponent } from 'src/app/components/login/login.component';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PublishOfferAndDemandComponent } from './components/publish-offer-and-demand/publish-offer-and-demand.component';
@@ -16,7 +17,7 @@ import { SearchUserByEmailComponent } from "./components/search-user-by-email/se
 import { PipesModule } from './pipes/pipes.module';
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, SearchUserByEmailComponent, HeaderComponent, HomePage, PublishOfferAndDemandComponent],
+  declarations: [AppComponent, RegisterComponent,LoginComponent, SearchUserByEmailComponent, HeaderComponent, HomePage, PublishOfferAndDemandComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, ReactiveFormsModule, PipesModule],
   providers: [

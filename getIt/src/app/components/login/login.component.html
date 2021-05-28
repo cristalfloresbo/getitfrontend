@@ -1,0 +1,63 @@
+  <form [formGroup]="loginForm" novalidate >
+    <ion-item>
+      <ion-label class = "titulo" >Iniciar Sesión</ion-label>
+      
+    </ion-item>
+
+<ion-item>
+  <ion-label position="stacked">Correo</ion-label>
+  <ion-input type="email" formControlName="email" class="form-control"></ion-input>
+</ion-item>
+<ion-label  color="danger" *ngIf="isInvalid('email')">
+  <h6 *ngIf="hasErrorControl('email', 'required')">Este campo es requerido</h6>
+  <h6 *ngIf="hasErrorControl('email', 'pattern')">
+    Ingrese un correo válido
+  </h6>
+  
+</ion-label>
+<ion-item>
+  <ion-label position="stacked">Contraseña</ion-label>
+  <ion-input type="password" formControlName="password" class="form-control"></ion-input>
+</ion-item>
+<ion-label  color="danger" *ngIf="isInvalid('password')">
+  <h6 *ngIf="hasErrorControl('password', 'required')">Este campo es requerido</h6>
+  
+</ion-label>
+
+<ion-button  >Cancelar</ion-button>
+<ion-button   type="submit"  >Aceptar</ion-button>
+
+
+
+
+
+</form>
+
+
+
+
+<!--(click)="save()" [disabled]="!publicationForm.valid"(click)="cancel()"
+  (click)="cancel()"
+  [disabled]="!publicationForm.valid"
+  <ion-content [fullscreen]="true">
+  <form [formGroup]="user" (ngSubmit)="saveData()" novalidate>
+    <ion-item>
+      <ion-label>Iniciar Sesión</ion-label>
+      </ion-item>>
+   
+
+    <ion-item>
+      <ion-label>Correo</ion-label>
+      <ion-input formControlName="email"></ion-input>
+    </ion-item>
+    
+
+    <ion-item>
+      <ion-label>Contraseña</ion-label>
+      <ion-input formControlName="password"></ion-input>
+    </ion-item>
+   
+
+    
+  </form>
+</ion-content> -->
