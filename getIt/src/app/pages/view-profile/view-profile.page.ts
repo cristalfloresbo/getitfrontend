@@ -18,11 +18,14 @@ export class ViewProfilePage implements OnInit {
   public age: number;
   public images = data;
   public showAlertMessage = new ShowAlertMessage();
+  public id;
 
   constructor(private apiService: ApiService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getUser();
+    this.id = +this.route.snapshot.paramMap.get('id');
+    console.log('USER', this.id);
   }
 
   public getUser() {
