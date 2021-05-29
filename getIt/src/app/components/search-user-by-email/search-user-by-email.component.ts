@@ -23,6 +23,8 @@ export class SearchUserByEmailComponent implements OnInit {
 		  .getAll<Users[]>("users")
 		  .subscribe((response) => {
 			this.users = response;
+			console.log('fvdf', this.users );
+			
 		  });
 	  }
 

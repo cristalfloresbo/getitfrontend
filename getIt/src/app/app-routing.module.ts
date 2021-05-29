@@ -20,6 +20,10 @@ const routes: Routes = [
   {
     path: 'getit',
     loadChildren: () => import('./pages/tab/tab.module').then( m => m.TabPageModule)
+  },
+  {
+    path: 'publish-offer-and-demand',
+    loadChildren: () => import('./pages/publish-offer-and-demand/publish-offer-and-demand.module').then( m => m.PublishOfferAndDemandPageModule)
   }
 
 ];
