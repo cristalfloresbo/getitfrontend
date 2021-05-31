@@ -23,6 +23,7 @@ import { SearchAdByWorkareaComponent } from "./components/search-ad-by-workarea/
     AppComponent,
     SearchAdByRequiredTimeComponent,
     SearchAdByFeeComponent,
+    SearchAdByWorkareaComponent,
     RegisterComponent,
     SearchAdByAddressComponent,
     SearchUserByEmailComponent,
