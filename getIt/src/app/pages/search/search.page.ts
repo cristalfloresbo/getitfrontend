@@ -11,9 +11,10 @@ export class SearchPage implements OnInit {
 
   public routes = {
     email: 'getit/search/by-email',
-    address: 'getit/search',
-    requiredTime: 'getit/search',
-    fee: 'getit/home'
+    address: 'getit/search/by-address',
+    requiredTime: 'getit/search/by-required-time',
+    fee: 'getit/search/by-fee',
+	workArea: 'getit/search/by-work-area'
   };
 
   public searchOptions = data;

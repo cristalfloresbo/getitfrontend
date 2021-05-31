@@ -1,11 +1,11 @@
 import { WorkArea } from './workArea.model';
 
 export interface User {
-    Id: number;
+    id: number;
     firstname: string;
     lastname: string;
     phone: string;
-    bithdate: string;
+    birthdate: string;
     address: string;
     workArea: WorkArea;
     score: number;
@@ -20,18 +20,6 @@ export interface Users {
     bithdate: string;
     address: string;
     workAreaId: number;
-    score: number;
-    email: string;
-}
-
-export interface UserModel {
-    id: number;
-    firstname: string;
-    lastname: string;
-    phone: string;
-    birthdate: Date;
-    address: string;
-    workArea: WorkArea;
     score: number;
     email: string;
 }
