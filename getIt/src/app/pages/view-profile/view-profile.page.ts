@@ -23,12 +23,12 @@ export class ViewProfilePage implements OnInit {
   constructor(private apiService: ApiService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getUser();
+   this.getUser();
     this.id = +this.route.snapshot.paramMap.get('id');
     console.log('USER', this.id);
   }
 
-  public getUser() {
+ public getUser() {
     this.apiService.getById<UserModel>('user', +this.route.snapshot.paramMap.get('id')).subscribe(response => {
       this.user = response;
       this.age = moment(new Date()).diff(moment(this.user.birthdate), 'years');

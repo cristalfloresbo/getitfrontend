@@ -1,7 +1,9 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
+import { LoginUserComponent } from "./components/login-user/login-user.component";
 import { PublishOfferAndDemandComponent } from "./components/publish-offer-and-demand/publish-offer-and-demand.component";
 import { RegisterComponent } from "./components/register/register.component";
+
 
 const routes: Routes = [
   {
@@ -11,6 +13,10 @@ const routes: Routes = [
   {
     path: "new-publication",
     component: PublishOfferAndDemandComponent,
+  },
+  {
+    path: "login-user",
+    component: LoginUserComponent,
   },
   {
     path: "",
