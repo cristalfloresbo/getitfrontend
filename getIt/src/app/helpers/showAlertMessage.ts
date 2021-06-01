@@ -21,6 +21,8 @@ export class ShowAlertMessage {
       icon: "error",
       title: message,
       text: "Algo no salió bien",
+      confirmButtonColor: "#3730A3",
+      confirmButtonText: "Aceptar",
       timer: 5000,
     });
   }
@@ -83,8 +85,8 @@ export class ShowAlertMessage {
       text: submessage,
       icon: "question",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#3730A3",
+      cancelButtonColor: "#6D6D6D",
       cancelButtonText: "No",
       confirmButtonText: "Sí",
     }).then((result) => {
