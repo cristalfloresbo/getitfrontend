@@ -69,7 +69,7 @@ export class RegisterComponent implements OnInit {
       ],
     ],
     workAreaId: [
-      "", 
+      " 0 ", 
     ],
     score: [
       this.defaultNum
