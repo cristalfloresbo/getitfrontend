@@ -92,7 +92,7 @@ export class LoginUserComponent implements OnInit {
    }*/
 
   public login() {
-    this.apiService.post('login', this.loginForm).subscribe(response => {
+    this.apiService.post('login-user', this.loginForm).subscribe(response => {
       const user = response;
       this.showAlert.showSuccessAlert("Bienvenido");// nombre del usuario
       this.router.navigate(['/getit/home']);
