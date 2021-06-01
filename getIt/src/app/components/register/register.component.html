@@ -79,11 +79,14 @@
 			<ion-label position="floating">Contraseña *</ion-label>
 			<ion-input type="password" formControlName="password"></ion-input>
 		</ion-item>
-		<ion-label color="danger" *ngIf="user.controls.password.errors?.pattern && (user.controls.password.touched || user.controls.password.dirty)">Contraseña inválida, almenos debe de contener una mayúscula, una minúscula y un número.</ion-label>
 		<ion-label class="M1" color="danger" *ngIf="user.controls.password.errors?.required && (user.controls.password.touched || user.controls.password.dirty)">Este campo es requerido.</ion-label>
+		<ion-label class="M1" color="danger" *ngIf="user.controls.password.errors?.pattern && (user.controls.password.touched || user.controls.password.dirty)">Contraseña inválida.</ion-label>
 		<br>
+		<ion-label class="M1" color="danger" *ngIf="user.controls.password.errors?.pattern && (user.controls.password.touched || user.controls.password.dirty)">Por lo menos una mayúscula,</ion-label>
 		<br>
-		<ion-label color="danger" *ngIf="user.controls.password.errors?.minlength && (user.controls.password.touched || user.controls.password.dirty)">Debe ser mínimo 8 caracteres.</ion-label>
+		<ion-label class="M1" color="danger" *ngIf="user.controls.password.errors?.pattern && (user.controls.password.touched || user.controls.password.dirty)">una minúscula y un número.</ion-label>
+		<br>
+		<ion-label class="M1" color="danger" *ngIf="user.controls.password.errors?.minlength && (user.controls.password.touched || user.controls.password.dirty)">Debe ser mínimo 8 caracteres.</ion-label>
 				  
 		<p class="ion-text-center">
 			<ion-grid>

@@ -78,7 +78,9 @@ export class RegisterComponent implements OnInit {
       "",
       [
         Validators.required,
-        Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$"),
+        Validators.pattern(
+          /[\w]{1,}[\w.+-]{0,}@[\w-]{1,}([.][a-zA-Z]{3,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$/
+        ),
       ],
     ],
     password: [
@@ -87,7 +89,7 @@ export class RegisterComponent implements OnInit {
         Validators.required,
         Validators.minLength(8),
         Validators.pattern(
-          /^(?=\D*\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{8,30}$/
+          /^(?=\D*\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{1,30}$/
         ),
       ],
     ],
