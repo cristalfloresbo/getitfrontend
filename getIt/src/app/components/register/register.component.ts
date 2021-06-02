@@ -79,7 +79,7 @@ export class RegisterComponent implements OnInit {
       [
         Validators.required,
         Validators.pattern(
-          /[\w]{1,}[\w.+-]{0,}@[\w-]{1,}([.][a-zA-Z]{3,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$/
+          /[\w]{1,}[\w.+-]{0,}@[\w-]{1,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$/
         ),
       ],
     ],
