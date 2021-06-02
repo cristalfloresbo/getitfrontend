@@ -83,8 +83,8 @@ export class ShowAlertMessage {
       text: submessage,
       icon: "question",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#3730A3",
+      cancelButtonColor: "#6D6D6D",
       cancelButtonText: "No",
       confirmButtonText: "Sí",
     }).then((result) => {

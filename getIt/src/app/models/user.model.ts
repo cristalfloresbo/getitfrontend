@@ -34,4 +34,5 @@ export interface UserModel {
     workArea: WorkArea;
     score: number;
     email: string;
+    list: Array<any>;
 }

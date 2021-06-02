@@ -10,18 +10,22 @@
     <ion-tab-bar slot="bottom">
       <ion-tab-button tab="home">
         <ion-icon name="home"></ion-icon>
+        <b>Inicio</b>
       </ion-tab-button>
   
       <ion-tab-button tab="publish">
         <ion-icon name="add"></ion-icon>
+        <b>Publicar</b>
       </ion-tab-button>
   
       <ion-tab-button tab="search">
         <ion-icon name="search"></ion-icon>
+        <b> Buscar</b>
       </ion-tab-button>
 
-      <ion-tab-button tab="view-profile">
+      <ion-tab-button tab="view-profile/{{currentUserId}}">
         <ion-icon name="person"></ion-icon>
+        <b>Perfil</b>
       </ion-tab-button>
     </ion-tab-bar>
   </ion-tabs>
