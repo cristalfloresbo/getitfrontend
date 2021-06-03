@@ -23,8 +23,8 @@
   <ion-grid>
     <ion-row>
       <ion-col size="4" no-padding no-margin *ngFor="let publication of publications;">
-        <ion-card href="getit/view-profile/{{user.id}}/publication/{{publication.id}}">
-          <ion-img src="/assets/images/image2.jpg"></ion-img>
+        <ion-card>
+          <ion-img (click)="viewPublication(publication.id)" src="/assets/images/image2.jpg"></ion-img>
         </ion-card>
       </ion-col>
     </ion-row>

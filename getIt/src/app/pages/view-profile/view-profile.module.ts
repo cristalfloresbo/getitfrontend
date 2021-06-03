@@ -7,6 +7,9 @@ import { ViewProfilePage } from './view-profile.page';
 import { ViewPublicationComponent } from 'src/app/components/view-publication/view-publication.component';
 
 @NgModule({
+  entryComponents: [
+    ViewPublicationComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
