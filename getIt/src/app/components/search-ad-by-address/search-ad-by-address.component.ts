@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Ad } from '../../models/ad.model';
 import { ApiService } from "src/app/api-service/api.service";
-import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-search-ad-by-address',
@@ -11,7 +10,7 @@ import { Router } from "@angular/router";
 export class SearchAdByAddressComponent implements OnInit {
 	public ads: Ad[] = [];
 	public txtToSearch: String = "";
-	constructor(private apiService: ApiService, private router: Router) { }
+	constructor(private apiService: ApiService) { }
 
 	ngOnInit() {
 		this.loadAds();

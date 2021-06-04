@@ -1,12 +1,12 @@
 <ion-header>
 	<ion-toolbar>
-		<ion-title>Buscar por Area de Trabajo</ion-title>
+		<ion-title>Buscar por Área de Trabajo</ion-title>
 	</ion-toolbar>
 </ion-header>
 
 <ion-content>
 	<ion-item lines="full">
-		<ion-label size="small">Area de trabajo</ion-label>
+		<ion-label size="small">Área de trabajo</ion-label>
 		<ion-select (ionChange)="OnChange($event)">
 			<ion-select-option *ngFor="let workarea of workareas" [value]="workarea.name">
 				{{workarea.name}}
@@ -70,7 +70,7 @@
 					</ion-col>
 				</ion-row>
       		</ion-card-content>
-			<ion-button color="medium" expand="block">Contactar</ion-button>
+			<ion-button color="medium" expand="block" href={{ad.user.phone}}>Contactar</ion-button>
     	</ion-card>
   	</ion-list>
 </ion-content>

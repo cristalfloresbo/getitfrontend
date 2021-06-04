@@ -4,9 +4,9 @@ export interface Ad {
     adId: number;
 	type: string;
 	workAreaName: string;
-	fee: number; 
+	fee: number;
 	address: string;
-	requiredTime: number; 
+	requiredTime: number;
 	description: string;
 	createdAt: string;
 	user: User;

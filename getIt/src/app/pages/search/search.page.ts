@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import data from "../../helpers/searchOptions";
 import { Router } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './search.page.html',
   styleUrls: ['./search.page.scss'],
 })
-export class SearchPage implements OnInit {
+export class SearchPage {
 
   public routes = {
     email: 'getit/search/by-email',
@@ -19,9 +19,6 @@ export class SearchPage implements OnInit {
 
   public searchOptions = data;
   constructor(private router: Router) { }
-
-  ngOnInit() {
-  }
 
   public redirectTo(event: CustomEvent) {
     this.router.navigate([this.routes[event.detail.value]]);

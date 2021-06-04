@@ -5,7 +5,7 @@ export default [
 		imageURL:
 		"https://www.arqhys.com/construccion/fotos/construccion/Construccion-de-techos.jpg",
 		description: "Construcción y montaje de estructuras, perfiles metálicos, costaneras, galvanizado, livianos o viga de madera, para cubiertas de columnas, singles, tejas cerámicas, policarbonatos, lunas mallas + cielo Drywall, PVC, presupuestos.",
-		heading: "Construccion", 
+		heading: "Construccion",
 		type: "Oferta",
 		requiredTime: "",
 		fee: "",

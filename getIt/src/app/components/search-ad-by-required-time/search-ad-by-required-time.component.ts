@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Ad } from '../../models/ad.model';
 import { ApiService } from "src/app/api-service/api.service";
-import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-search-ad-by-required-time',
@@ -10,8 +9,8 @@ import { Router } from "@angular/router";
 })
 export class SearchAdByRequiredTimeComponent implements OnInit {
 	public ads: Ad[] = [];
-	public txtToSearch: number = 0;
-	constructor(private apiService: ApiService, private router: Router) { }
+	public txtToSearch = 0;
+	constructor(private apiService: ApiService) { }
 
 	ngOnInit() {
 		this.loadAds();

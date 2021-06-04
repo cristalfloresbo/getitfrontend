@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Users } from '../../models/user.model';
 import { ApiService } from "src/app/api-service/api.service";
-import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-search-user-by-email',
@@ -12,7 +11,7 @@ export class SearchUserByEmailComponent implements OnInit {
 	public users: Users[] = [];
 	public txtToSearch: String = "";
 
-	constructor(private apiService: ApiService, private router: Router) {}
+	constructor(private apiService: ApiService) {}
 
 	ngOnInit() {
 		this.loadUsers();

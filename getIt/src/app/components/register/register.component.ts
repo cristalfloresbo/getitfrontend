@@ -13,6 +13,7 @@ import * as moment from 'moment';
   styleUrls: ["./register.component.scss"],
 })
 export class RegisterComponent implements OnInit {
+<<<<<<< HEAD
   public ultDate = "";
   public defaultDate = "";
   public mDate = this.minDate();
@@ -22,15 +23,16 @@ export class RegisterComponent implements OnInit {
   public auxPhone = "";
   private showMessage = new ShowAlertMessage();
   public workareas: WorkArea[] = [];
+=======
+>>>>>>> solving observations
 
   constructor(
     public formBuilder: FormBuilder,
     private apiService: ApiService
   ) {}
-
-  ngOnInit() {
-    this.loadWorkAreas();
-  }
+  public defaultDate = new Date();
+  private showMessage = new ShowAlertMessage();
+  public workareas: WorkArea[] = [];
 
   user = this.formBuilder.group({
     firstname: [
@@ -97,6 +99,10 @@ export class RegisterComponent implements OnInit {
     ],
   });
 
+  ngOnInit() {
+    this.loadWorkAreas();
+  }
+
   async loadWorkAreas() {
     await this.apiService
       .getAll<WorkArea[]>("/workareas")
@@ -106,6 +112,7 @@ export class RegisterComponent implements OnInit {
   }
 
   saveData() {
+<<<<<<< HEAD
     const ag = this.calAge();
     if (ag >= 18) {
       this.createLink();
@@ -125,6 +132,19 @@ export class RegisterComponent implements OnInit {
     } else {
         this.showMessage.showError(
           'Tiene que tener por lo menos 18 años para registrarse'
+=======
+	this.user.get("workAreaId").setValue(+this.user.get("workAreaId").value);
+
+ this.apiService.post(`/register-user`, this.user.value).subscribe(
+      (idUser: number) => {
+        this.showMessage.showSuccessAlert(
+          `user with id: ${idUser} registered successfully!`
+        );
+      },
+      (error: HttpErrorResponse) => {
+        this.showMessage.showErrorAlert(
+			`Ha ocurrido un error: ${error.message}, vuelva a intentarlo`
+>>>>>>> solving observations
         );
       }
   }

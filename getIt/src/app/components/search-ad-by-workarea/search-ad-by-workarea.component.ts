@@ -12,9 +12,9 @@ export class SearchAdByWorkareaComponent implements OnInit {
 
 	public workareas: WorkArea[] = [];
 	public ads: Ad[] = [];
-  
+
 	constructor(private apiService: ApiService) {}
-  
+
 	ngOnInit() {
 	  	this.loadWorkAreas();
 	}
@@ -29,7 +29,7 @@ export class SearchAdByWorkareaComponent implements OnInit {
 
 	OnChange(event) {
 		this.apiService
-		  .getByParams<Ad[]>("publications", { workarea:event.target.value })
+		  .getByParams<Ad[]>("publications", { workarea: event.target.value })
 		  .subscribe((response) => {
 			this.ads = response;
 		  });
