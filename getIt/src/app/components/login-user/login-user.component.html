@@ -1,4 +1,5 @@
 <ion-content>
+  <ion-grid>
   <form [formGroup]="loginForm"  >
     <ion-row>
       <ion-toolbar>
@@ -28,6 +29,7 @@
   Este campo es requerido</h6>
   <h6 *ngIf="hasErrorControl('password', 'pattern')">
     Contraseña invalida
+
   </h6>
 
 </ion-label>
@@ -52,6 +54,7 @@
 
 
 </form>
-</ion-content>>
+</ion-grid>
+</ion-content>
 
 

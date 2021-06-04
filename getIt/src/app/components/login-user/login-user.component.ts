@@ -29,7 +29,10 @@ export class LoginUserComponent implements OnInit {
   }
   private createLoginForm() {
     this.loginForm = this.formBuilder.group({
-      email: ["", [Validators.required, Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$")]],
+      email: ["", [Validators.required,Validators.pattern(
+        /[\w]{1,}[\w.+-]{0,}@[\w-]{1,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$/
+      )
+]],
       // tslint:disable-next-line:max-line-length
       password: ["", [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=\D*\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{8,30}$/)]]
 
