@@ -15,6 +15,8 @@ import * as moment from 'moment';
 export class RegisterComponent implements OnInit {
   public ultDate = "";
   public defaultDate = "";
+  public mDate = this.minDate();
+  public mxDate = this.maxDate();
   public prevPhone = 'https://wa.me/591';
   public defaultNum = 0;
   public auxPhone = "";
@@ -51,7 +53,8 @@ export class RegisterComponent implements OnInit {
       "", 
       [
         Validators.required, 
-        Validators.minLength(8)
+        Validators.min(60000000),
+        Validators.max(79999999)
       ]
     ],
     birthdate: [
@@ -64,12 +67,12 @@ export class RegisterComponent implements OnInit {
       "",
       [
         Validators.required, 
-        Validators.minLength(4), 
+        Validators.minLength(10), 
         Validators.maxLength(50)
       ],
     ],
     workAreaId: [
-      " 0 ", 
+      "0", 
     ],
     score: [
       this.defaultNum
@@ -107,15 +110,15 @@ export class RegisterComponent implements OnInit {
     const ag = this.calAge();
     if (ag >= 18) {
       this.createLink();
-      console.log('La edad es' + ' ' + ag);
       console.log(this.user.value);
-	    this.user.get("workAreaId").setValue(+this.user.get("workAreaId").value); 
+	    //this.user.get("workAreaId").setValue(+this.user.get("workAreaId").value); 
 
       this.apiService.post(`/register-user`, this.user.value).subscribe(
         (idUser: number) => {
           this.showMessage.showSuccessAlert(
-            `user with id: ${idUser} registered successfully!`
+            `¡Se registró exitosamente!`
           );
+          window.location.href ="/getit";
         },
         (error: HttpErrorResponse) => {
           this.showMessage.showErrorAlert(
@@ -123,11 +126,11 @@ export class RegisterComponent implements OnInit {
           );
         }
       );
+      //window.location.href ="/getit";
     } else {
         this.showMessage.showError(
-          `No puedes registrarte no cumples con la edad necesaria`
+          `Tiene que tener por lo menos 18 años para registrarse`
         );
-        console.log('No puedes registrarte no cumples con la edad necesaria' + 'tu edad es:' + ag);
         console.log(this.user.value);
       }
   }
@@ -137,6 +140,18 @@ export class RegisterComponent implements OnInit {
     this.user.get("birthdate").setValue(date, {
       onlyself: true,
     });
+  }
+
+  minDate() {
+    let fecha = new Date();
+    fecha.setFullYear(fecha.getFullYear()-70);
+    return fecha.toISOString().substring(0, 10);
+  }
+
+  maxDate() {
+    let fecha = new Date();
+    fecha.setFullYear(fecha.getFullYear()-18);
+    return fecha.toISOString().substring(0, 10);
   }
 
   calAge() {
