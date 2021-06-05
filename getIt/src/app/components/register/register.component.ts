@@ -109,7 +109,6 @@ export class RegisterComponent implements OnInit {
     const ag = this.calAge();
     if (ag >= 18) {
       this.createLink();
-      console.log(this.user.value);
       this.apiService.post('/register-user', this.user.value).subscribe(
         (idUser: number) => {
           this.showMessage.showSuccessAlert(
@@ -127,7 +126,6 @@ export class RegisterComponent implements OnInit {
         this.showMessage.showError(
           'Tiene que tener por lo menos 18 años para registrarse'
         );
-        console.log(this.user.value);
       }
   }
 
