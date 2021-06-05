@@ -66,7 +66,6 @@ export class RegisterComponent implements OnInit {
     address: [
       "",
       [
-        Validators.required, 
         Validators.minLength(10), 
         Validators.maxLength(50)
       ],
@@ -111,46 +110,43 @@ export class RegisterComponent implements OnInit {
     if (ag >= 18) {
       this.createLink();
       console.log(this.user.value);
-	    //this.user.get("workAreaId").setValue(+this.user.get("workAreaId").value); 
-
-      this.apiService.post(`/register-user`, this.user.value).subscribe(
+      this.apiService.post('/register-user', this.user.value).subscribe(
         (idUser: number) => {
           this.showMessage.showSuccessAlert(
-            `¡Se registró exitosamente!`
+            '¡Se registró exitosamente!'
           );
-          window.location.href ="/getit";
+          window.location.href = '/getit';
         },
         (error: HttpErrorResponse) => {
           this.showMessage.showErrorAlert(
-		  	    `Ha ocurrido un error: ${error.message}, vuelva a intentarlo`
+            `Ha ocurrido un error: ${error.message}, vuelva a intentarlo`
           );
         }
       );
-      //window.location.href ="/getit";
     } else {
         this.showMessage.showError(
-          `Tiene que tener por lo menos 18 años para registrarse`
+          'Tiene que tener por lo menos 18 años para registrarse'
         );
         console.log(this.user.value);
       }
   }
 
   getDate(e) {
-    let date = new Date(e.target.value).toISOString().substring(0, 10);
+    const date = new Date(e.target.value).toISOString().substring(0, 10);
     this.user.get("birthdate").setValue(date, {
       onlyself: true,
     });
   }
 
   minDate() {
-    let fecha = new Date();
-    fecha.setFullYear(fecha.getFullYear()-70);
+    const fecha = new Date();
+    fecha.setFullYear(fecha.getFullYear() - 70);
     return fecha.toISOString().substring(0, 10);
   }
 
   maxDate() {
-    let fecha = new Date();
-    fecha.setFullYear(fecha.getFullYear()-18);
+    const fecha = new Date();
+    fecha.setFullYear(fecha.getFullYear() - 18);
     return fecha.toISOString().substring(0, 10);
   }
 

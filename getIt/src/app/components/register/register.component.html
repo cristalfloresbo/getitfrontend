@@ -49,16 +49,15 @@
 		
 		<ion-item class="M1">
 			<ion-label position="floating" >Fecha de Nacimiento * </ion-label>
-			<ion-datetime [min]="mDate" [max]="mxDate" (ionChange)="getDate($event)" formControlName="birthdate" [(ngModel)]="ultDate" [value]="defaultDate" placeholder="Presiona Aqui" doneText="Aceptar" cancelText="Cancelar"></ion-datetime>
+			<ion-datetime [min]="mDate" [max]="mxDate" (ionChange)="getDate($event)" formControlName="birthdate" [(ngModel)]="ultDate" [value]="defaultDate" placeholder="Presiona Aquí" doneText="Aceptar" cancelText="Cancelar"></ion-datetime>
 		</ion-item>
 		<ion-label class="M1" color="danger" *ngIf="user.controls.birthdate.errors?.required && (user.controls.birthdate.touched || user.controls.birthdate.dirty)">Campo requerido.</ion-label>
 
 
 		<ion-item class="M1">
-			<ion-label position="floating">Dirección *</ion-label>
+			<ion-label position="floating">Dirección</ion-label>
 			<ion-input formControlName="address"></ion-input>
 		</ion-item>
-		<ion-label class="M1" color="danger" *ngIf="user.controls.address.errors?.required && (user.controls.address.touched || user.controls.address.dirty)">Campo requerido.</ion-label>
 		<ion-label class="M1" color="danger" *ngIf="user.controls.address.errors?.minlength && (user.controls.address.touched || user.controls.address.dirty)">Ingrese mínimo 10 caracteres.</ion-label>
 		<ion-label class="M1" color="danger" *ngIf="user.controls.address.errors?.maxlength && (user.controls.address.touched || user.controls.address.dirty)">Ingrese máximo 50 caracteres.</ion-label>
 		
