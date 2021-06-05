@@ -17,7 +17,6 @@ export class RegisterComponent implements OnInit {
   public defaultDate = "";
   public mDate = this.minDate();
   public mxDate = this.maxDate();
-  public prevPhone = 'https://wa.me/591';
   public defaultNum = 0;
   public auxPhone = "";
   private showMessage = new ShowAlertMessage();
@@ -152,7 +151,7 @@ export class RegisterComponent implements OnInit {
   }
 
   createLink() {
-    this.user.controls.phone.setValue(this.prevPhone + this.auxPhone);
+    this.user.controls.phone.setValue('https://wa.me/591' + this.auxPhone);
   }
 
   clearForm() {
