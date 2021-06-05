@@ -12,14 +12,18 @@
     <p>Edad: {{age}}</p>
     <p>Dirección: {{user?.address}}</p>
   </div>
-  <div class="rating">  
-    <ion-icon name="star" size="large" color="primary"></ion-icon>
-    <ion-icon name="star" size="large" color="primary"></ion-icon>
-    <ion-icon name="star" size="large" color="primary"></ion-icon>
-    <ion-icon name="star" size="large" color="primary"></ion-icon>
-    <ion-icon name="star" size="large" color="primary"></ion-icon>
+  <div class="rating">
+    <ion-range (ionChange)="rating($event)"
+      min="0"
+      max="5"
+      pin="true"
+      snaps="true"
+      color="primary"
+      value={{user?.score}}>
+      <ion-icon size="small" slot="start" name="star" color="primary"></ion-icon>
+      <ion-icon slot="end" name="star" color="primary"></ion-icon>
+    </ion-range>
   </div>
-
   <ion-grid>
     <ion-row>
       <ion-col size="4" no-padding no-margin *ngFor="let publication of publications;">

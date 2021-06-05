@@ -22,7 +22,7 @@ export class ApiService {
 		return this.http.get<T>(`${environment.api_url}/${dir}/${id}`);
 	}
 	
-	put<T>(dir: string, id: string, model: object): Observable<T> {
+	put<T>(dir: string, id: number, model: object): Observable<T> {
 		return this.http.put<T>(`${environment.api_url}/${dir}/${id}`, model);
 	}
 	
