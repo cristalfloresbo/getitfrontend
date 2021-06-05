@@ -1,31 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { Ad } from '../../models/ad.model';
+import { Component, OnInit } from "@angular/core";
 import { ApiService } from "src/app/api-service/api.service";
+import { Ad } from "../../models/ad.model";
 
 @Component({
-  selector: 'app-search-ad-by-fee',
-  templateUrl: './search-ad-by-fee.component.html',
-  styleUrls: ['./search-ad-by-fee.component.scss'],
+  selector: "app-search-ad-by-fee",
+  templateUrl: "./search-ad-by-fee.component.html",
+  styleUrls: ["./search-ad-by-fee.component.scss"],
 })
 export class SearchAdByFeeComponent implements OnInit {
-	public ads: Ad[] = [];
-	public txtToSearch = 0;
-	constructor(private apiService: ApiService) { }
+  public ads: Ad[] = [];
+  public txtToSearch = 0;
+  constructor(private apiService: ApiService) {}
 
-	ngOnInit() {
-		this.loadAds();
-	}
+  public ngOnInit() {
+    this.loadAds();
+  }
 
-	async loadAds() {
-		await this.apiService
-		  .getAll<Ad[]>("publications")
-		  .subscribe((response) => {
-			this.ads = response;
-		  });
-	  }
+  public async loadAds() {
+    await this.apiService.getAll<Ad[]>("publications").subscribe((response) => {
+      this.ads = response;
+    });
+  }
 
-	search(event) {
-		this.txtToSearch = +event.detail.value;
-	}
-
+  public search(event) {
+    this.txtToSearch = +event.detail.value;
+  }
 }

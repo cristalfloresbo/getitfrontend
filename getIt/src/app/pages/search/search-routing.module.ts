@@ -1,38 +1,38 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { SearchAdByWorkareaComponent } from 'src/app/components/search-ad-by-workarea/search-ad-by-workarea.component';
-import { SearchAdByAddressComponent } from 'src/app/components/search-ad-by-address/search-ad-by-address.component';
-import { SearchAdByFeeComponent } from 'src/app/components/search-ad-by-fee/search-ad-by-fee.component';
-import { SearchAdByRequiredTimeComponent } from 'src/app/components/search-ad-by-required-time/search-ad-by-required-time.component';
-import { SearchUserByEmailComponent } from 'src/app/components/search-user-by-email/search-user-by-email.component';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { SearchAdByAddressComponent } from "src/app/components/search-ad-by-address/search-ad-by-address.component";
+import { SearchAdByFeeComponent } from "src/app/components/search-ad-by-fee/search-ad-by-fee.component";
+import { SearchAdByRequiredTimeComponent } from "src/app/components/search-ad-by-required-time/search-ad-by-required-time.component";
+import { SearchAdByWorkareaComponent } from "src/app/components/search-ad-by-workarea/search-ad-by-workarea.component";
+import { SearchUserByEmailComponent } from "src/app/components/search-user-by-email/search-user-by-email.component";
 
-import { SearchPage } from './search.page';
+import { SearchPage } from "./search.page";
 
 const routes: Routes = [
   {
-    path: '',
-    component: SearchPage
+    path: "",
+    component: SearchPage,
   },
   {
-    path: 'by-work-area',
+    path: "by-work-area",
     component: SearchAdByWorkareaComponent,
   },
   {
-    path: 'by-address',
+    path: "by-address",
     component: SearchAdByAddressComponent,
   },
   {
-    path: 'by-fee',
+    path: "by-fee",
     component: SearchAdByFeeComponent,
   },
   {
-    path: 'by-required-time',
+    path: "by-required-time",
     component: SearchAdByRequiredTimeComponent,
   },
   {
-    path: 'by-email',
-    component: SearchUserByEmailComponent
-  }
+    path: "by-email",
+    component: SearchUserByEmailComponent,
+  },
 ];
 
 @NgModule({

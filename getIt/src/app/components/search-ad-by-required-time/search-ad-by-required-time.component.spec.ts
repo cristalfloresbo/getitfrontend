@@ -1,16 +1,16 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { IonicModule } from "@ionic/angular";
 
-import { SearchAdByRequiredTimeComponent } from './search-ad-by-required-time.component';
+import { SearchAdByRequiredTimeComponent } from "./search-ad-by-required-time.component";
 
-describe('SearchAdByRequiredTimeComponent', () => {
+describe("SearchAdByRequiredTimeComponent", () => {
   let component: SearchAdByRequiredTimeComponent;
   let fixture: ComponentFixture<SearchAdByRequiredTimeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchAdByRequiredTimeComponent ],
-      imports: [IonicModule.forRoot()]
+      declarations: [SearchAdByRequiredTimeComponent],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SearchAdByRequiredTimeComponent);
@@ -18,7 +18,7 @@ describe('SearchAdByRequiredTimeComponent', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

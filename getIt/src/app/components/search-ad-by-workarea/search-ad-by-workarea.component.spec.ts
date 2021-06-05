@@ -1,16 +1,16 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { IonicModule } from "@ionic/angular";
 
-import { SearchAdByWorkareaComponent } from './search-ad-by-workarea.component';
+import { SearchAdByWorkareaComponent } from "./search-ad-by-workarea.component";
 
-describe('SearchAdByWorkareaComponent', () => {
+describe("SearchAdByWorkareaComponent", () => {
   let component: SearchAdByWorkareaComponent;
   let fixture: ComponentFixture<SearchAdByWorkareaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchAdByWorkareaComponent ],
-      imports: [IonicModule.forRoot()]
+      declarations: [SearchAdByWorkareaComponent],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SearchAdByWorkareaComponent);
@@ -18,7 +18,7 @@ describe('SearchAdByWorkareaComponent', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

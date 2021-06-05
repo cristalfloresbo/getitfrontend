@@ -1,26 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ApiService } from 'src/app/api-service/api.service';
-import { ShowAlertMessage } from 'src/app/helpers/showAlertMessage';
-import { Publication } from 'src/app/models/publication.model';
-import { WorkArea } from 'src/app/models/workArea.model';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+import { ApiService } from "src/app/api-service/api.service";
+import { ShowAlertMessage } from "src/app/helpers/showAlertMessage";
+import { Publication } from "src/app/models/publication.model";
+import { WorkArea } from "src/app/models/workArea.model";
 
 @Component({
-  selector: 'app-publish-offer-and-demand',
-  templateUrl: './publish-offer-and-demand.page.html',
-  styleUrls: ['./publish-offer-and-demand.page.scss'],
+  selector: "app-publish-offer-and-demand",
+  templateUrl: "./publish-offer-and-demand.page.html",
+  styleUrls: ["./publish-offer-and-demand.page.scss"],
 })
 export class PublishOfferAndDemandPage implements OnInit {
-  publicationForm: FormGroup;
+  public publicationForm: FormGroup;
   public workareas: WorkArea[] = [];
   private publication: Publication;
   private USER_ID = 1;
   private showMessage = new ShowAlertMessage();
 
-  constructor(public formBuilder: FormBuilder, private apiService: ApiService, private route: Router) { }
+  constructor(
+    public formBuilder: FormBuilder,
+    private apiService: ApiService,
+    private route: Router
+  ) {}
 
-  ngOnInit() {
+  public ngOnInit() {
     this.createPublicationForm();
     this.loadWorkAreas();
   }
@@ -40,7 +44,7 @@ export class PublishOfferAndDemandPage implements OnInit {
       .post(`/publication`, this.publication)
       .subscribe((results) => {
         this.showMessage.showSuccessAlert(
-          'Publicación registrada exitosamente'
+          "Publicación registrada exitosamente"
         );
       });
   }
@@ -78,5 +82,4 @@ export class PublishOfferAndDemandPage implements OnInit {
       ],
     });
   }
-
 }

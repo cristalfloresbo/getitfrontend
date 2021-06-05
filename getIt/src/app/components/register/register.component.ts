@@ -13,7 +13,6 @@ import * as moment from 'moment';
   styleUrls: ["./register.component.scss"],
 })
 export class RegisterComponent implements OnInit {
-<<<<<<< HEAD
   public ultDate = "";
   public defaultDate = "";
   public mDate = this.minDate();
@@ -23,38 +22,33 @@ export class RegisterComponent implements OnInit {
   public auxPhone = "";
   private showMessage = new ShowAlertMessage();
   public workareas: WorkArea[] = [];
-=======
->>>>>>> solving observations
 
   constructor(
     public formBuilder: FormBuilder,
     private apiService: ApiService
   ) {}
-  public defaultDate = new Date();
-  private showMessage = new ShowAlertMessage();
-  public workareas: WorkArea[] = [];
 
   user = this.formBuilder.group({
     firstname: [
-      "",
+      '',
       [
-        Validators.required, 
-        Validators.minLength(3), 
+        Validators.required,
+        Validators.minLength(3),
         Validators.maxLength(50)
       ],
     ],
     lastname: [
-      "",
+      '',
       [
-        Validators.required, 
-        Validators.minLength(3), 
+        Validators.required,
+        Validators.minLength(3),
         Validators.maxLength(50)
       ],
     ],
     phone: [
-      "", 
+      '',
       [
-        Validators.required, 
+        Validators.required,
         Validators.min(60000000),
         Validators.max(79999999)
       ]
@@ -66,20 +60,20 @@ export class RegisterComponent implements OnInit {
       ],
     ],
     address: [
-      "",
+      '',
       [
-        Validators.minLength(10), 
+        Validators.minLength(10),
         Validators.maxLength(50)
       ],
     ],
     workAreaId: [
-      "0", 
+      '0',
     ],
     score: [
       this.defaultNum
     ],
     email: [
-      "",
+      '',
       [
         Validators.required,
         Validators.pattern(
@@ -112,7 +106,6 @@ export class RegisterComponent implements OnInit {
   }
 
   saveData() {
-<<<<<<< HEAD
     const ag = this.calAge();
     if (ag >= 18) {
       this.createLink();
@@ -132,19 +125,6 @@ export class RegisterComponent implements OnInit {
     } else {
         this.showMessage.showError(
           'Tiene que tener por lo menos 18 años para registrarse'
-=======
-	this.user.get("workAreaId").setValue(+this.user.get("workAreaId").value);
-
- this.apiService.post(`/register-user`, this.user.value).subscribe(
-      (idUser: number) => {
-        this.showMessage.showSuccessAlert(
-          `user with id: ${idUser} registered successfully!`
-        );
-      },
-      (error: HttpErrorResponse) => {
-        this.showMessage.showErrorAlert(
-			`Ha ocurrido un error: ${error.message}, vuelva a intentarlo`
->>>>>>> solving observations
         );
       }
   }

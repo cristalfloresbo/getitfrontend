@@ -1,27 +1,25 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 import data from "../../helpers/searchOptions";
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.page.html',
-  styleUrls: ['./search.page.scss'],
+  selector: "app-search",
+  templateUrl: "./search.page.html",
+  styleUrls: ["./search.page.scss"],
 })
 export class SearchPage {
-
   public routes = {
-    email: 'getit/search/by-email',
-    address: 'getit/search/by-address',
-    requiredTime: 'getit/search/by-required-time',
-    fee: 'getit/search/by-fee',
-	workArea: 'getit/search/by-work-area'
+    email: "getit/search/by-email",
+    address: "getit/search/by-address",
+    requiredTime: "getit/search/by-required-time",
+    fee: "getit/search/by-fee",
+    workArea: "getit/search/by-work-area",
   };
 
   public searchOptions = data;
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   public redirectTo(event: CustomEvent) {
     this.router.navigate([this.routes[event.detail.value]]);
   }
-
 }

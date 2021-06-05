@@ -1,4 +1,4 @@
-import { CONNECT_AND, CONNECT_EQUAL } from './constants';
+import { CONNECT_AND, CONNECT_EQUAL } from "./constants";
 
 /**
  * Transform an object to query params
@@ -7,7 +7,7 @@ import { CONNECT_AND, CONNECT_EQUAL } from './constants';
  * @returns {string} query params
  */
 export function objectToQueryString(obj) {
-	return Object.keys(obj)
-		.map((key) => key + CONNECT_EQUAL + obj[key])
-		.join(CONNECT_AND);
+  return Object.keys(obj)
+    .map((key) => key + CONNECT_EQUAL + obj[key])
+    .join(CONNECT_AND);
 }
