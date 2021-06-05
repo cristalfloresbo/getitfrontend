@@ -4,8 +4,8 @@ import { Ad } from "../../models/ad.model";
 
 @Component({
   selector: "app-search-ad-by-fee",
-  templateUrl: "./search-ad-by-fee.component.html",
   styleUrls: ["./search-ad-by-fee.component.scss"],
+  templateUrl: "./search-ad-by-fee.component.html",
 })
 export class SearchAdByFeeComponent implements OnInit {
   public ads: Ad[] = [];

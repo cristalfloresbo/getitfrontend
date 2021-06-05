@@ -4,8 +4,8 @@ import { Users } from "../../models/user.model";
 
 @Component({
   selector: "app-search-user-by-email",
-  templateUrl: "./search-user-by-email.component.html",
   styleUrls: ["./search-user-by-email.component.scss"],
+  templateUrl: "./search-user-by-email.component.html",
 })
 export class SearchUserByEmailComponent implements OnInit {
   public users: Users[] = [];

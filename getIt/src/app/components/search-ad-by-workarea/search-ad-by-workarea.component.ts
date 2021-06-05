@@ -5,8 +5,8 @@ import { Ad } from "../../models/ad.model";
 
 @Component({
   selector: "app-search-ad-by-workarea",
-  templateUrl: "./search-ad-by-workarea.component.html",
   styleUrls: ["./search-ad-by-workarea.component.scss"],
+  templateUrl: "./search-ad-by-workarea.component.html",
 })
 export class SearchAdByWorkareaComponent implements OnInit {
   public workareas: WorkArea[] = [];

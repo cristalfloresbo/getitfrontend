@@ -9,8 +9,8 @@ import * as moment from 'moment';
 
 @Component({
   selector: "app-register",
-  templateUrl: "./register.component.html",
   styleUrls: ["./register.component.scss"],
+  templateUrl: "./register.component.html",
 })
 export class RegisterComponent implements OnInit {
   public ultDate = "";
