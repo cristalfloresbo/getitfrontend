@@ -9,8 +9,8 @@ import * as moment from 'moment';
 
 @Component({
   selector: "app-register",
-  styleUrls: ["./register.component.scss"],
   templateUrl: "./register.component.html",
+  styleUrls: ["./register.component.scss"],
 })
 export class RegisterComponent implements OnInit {
   public ultDate = "";
@@ -111,9 +111,7 @@ export class RegisterComponent implements OnInit {
       this.createLink();
       this.apiService.post('/register-user', this.user.value).subscribe(
         (idUser: number) => {
-          this.showMessage.showSuccessAlert(
-            '¡Se registró exitosamente!'
-          );
+          this.showMessage.showSuccessAlert('¡Se registró exitosamente!');
           window.location.href = '/getit';
         },
         (error: HttpErrorResponse) => {

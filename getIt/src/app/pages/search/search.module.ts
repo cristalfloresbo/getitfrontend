@@ -12,13 +12,6 @@ import { SearchPageRoutingModule } from "./search-routing.module";
 import { SearchPage } from "./search.page";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    PipesModule,
-    SearchPageRoutingModule,
-  ],
   declarations: [
     SearchPage,
     SearchUserByEmailComponent,
@@ -26,6 +19,13 @@ import { SearchPage } from "./search.page";
     SearchAdByAddressComponent,
     SearchAdByFeeComponent,
     SearchAdByRequiredTimeComponent,
+  ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    PipesModule,
+    SearchPageRoutingModule,
   ],
 })
 export class SearchPageModule {}
