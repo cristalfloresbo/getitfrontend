@@ -4,15 +4,15 @@ import data from "../../helpers/searchOptions";
 
 @Component({
   selector: "app-search",
-  templateUrl: "./search.page.html",
   styleUrls: ["./search.page.scss"],
+  templateUrl: "./search.page.html",
 })
 export class SearchPage {
   public routes = {
-    email: "getit/search/by-email",
     address: "getit/search/by-address",
-    requiredTime: "getit/search/by-required-time",
+    email: "getit/search/by-email",
     fee: "getit/search/by-fee",
+    requiredTime: "getit/search/by-required-time",
     workArea: "getit/search/by-work-area",
   };
 
