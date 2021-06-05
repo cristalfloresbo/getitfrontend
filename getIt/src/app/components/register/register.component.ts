@@ -5,6 +5,7 @@ import { ApiService } from "src/app/api-service/api.service";
 import { HttpErrorResponse } from "@angular/common/http";
 import { ShowAlertMessage } from "src/app/helpers/showAlertMessage";
 import { WorkArea } from "src/app/models/workArea.model";
+import * as moment from 'moment';
 
 @Component({
   selector: "app-register",
@@ -12,7 +13,13 @@ import { WorkArea } from "src/app/models/workArea.model";
   styleUrls: ["./register.component.scss"],
 })
 export class RegisterComponent implements OnInit {
-  public defaultDate = new Date();
+  public ultDate = "";
+  public defaultDate = "";
+  public mDate = this.minDate();
+  public mxDate = this.maxDate();
+  public prevPhone = 'https://wa.me/591';
+  public defaultNum = 0;
+  public auxPhone = "";
   private showMessage = new ShowAlertMessage();
   public workareas: WorkArea[] = [];
 
@@ -28,27 +35,54 @@ export class RegisterComponent implements OnInit {
   user = this.formBuilder.group({
     firstname: [
       "",
-      [Validators.required, Validators.minLength(4), Validators.maxLength(50)],
+      [
+        Validators.required, 
+        Validators.minLength(3), 
+        Validators.maxLength(50)
+      ],
     ],
     lastname: [
       "",
-      [Validators.required, Validators.minLength(4), Validators.maxLength(50)],
+      [
+        Validators.required, 
+        Validators.minLength(3), 
+        Validators.maxLength(50)
+      ],
     ],
-    phone: ["", [Validators.required, Validators.minLength(32)]],
+    phone: [
+      "", 
+      [
+        Validators.required, 
+        Validators.min(60000000),
+        Validators.max(79999999)
+      ]
+    ],
     birthdate: [
       this.defaultDate,
-      [Validators.required, Validators.minLength(4)],
+      [
+        Validators.required
+      ],
     ],
     address: [
       "",
-      [Validators.required, Validators.minLength(4), Validators.maxLength(150)],
+      [
+        Validators.minLength(10), 
+        Validators.maxLength(50)
+      ],
     ],
-    workAreaId: ["", [Validators.required]],
+    workAreaId: [
+      "0", 
+    ],
+    score: [
+      this.defaultNum
+    ],
     email: [
       "",
       [
         Validators.required,
-        Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$"),
+        Validators.pattern(
+          /[\w]{1,}[\w.+-]{0,}@[\w-]{1,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$/
+        ),
       ],
     ],
     password: [
@@ -57,7 +91,7 @@ export class RegisterComponent implements OnInit {
         Validators.required,
         Validators.minLength(8),
         Validators.pattern(
-          /^(?=\D*\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{8,30}$/
+          /^(?=\D*\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{1,30}$/
         ),
       ],
     ],
@@ -72,32 +106,71 @@ export class RegisterComponent implements OnInit {
   }
 
   saveData() {
-	this.user.get("workAreaId").setValue(+this.user.get("workAreaId").value); 
-
-    this.apiService.post(`/register-user`, this.user.value).subscribe(
-      (idUser: number) => {
-        this.showMessage.showSuccessAlert(
-          `user with id: ${idUser} registered successfully!`
-        );
-      },
-      (error: HttpErrorResponse) => {
-        this.showMessage.showErrorAlert(
-			`Ha ocurrido un error: ${error.message}, vuelva a intentarlo`
+    const ag = this.calAge();
+    if (ag >= 18) {
+      this.createLink();
+      this.apiService.post('/register-user', this.user.value).subscribe(
+        (idUser: number) => {
+          this.showMessage.showSuccessAlert(
+            '¡Se registró exitosamente!'
+          );
+          window.location.href = '/getit';
+        },
+        (error: HttpErrorResponse) => {
+          this.showMessage.showErrorAlert(
+            `Ha ocurrido un error: ${error.message}, vuelva a intentarlo`
+          );
+        }
+      );
+    } else {
+        this.showMessage.showError(
+          'Tiene que tener por lo menos 18 años para registrarse'
         );
       }
-    );
   }
 
   getDate(e) {
-    let date = new Date(e.target.value).toISOString().substring(0, 10);
+    const date = new Date(e.target.value).toISOString().substring(0, 10);
     this.user.get("birthdate").setValue(date, {
       onlyself: true,
     });
   }
 
+  minDate() {
+    const fecha = new Date();
+    fecha.setFullYear(fecha.getFullYear() - 70);
+    return fecha.toISOString().substring(0, 10);
+  }
+
+  maxDate() {
+    const fecha = new Date();
+    fecha.setFullYear(fecha.getFullYear() - 18);
+    return fecha.toISOString().substring(0, 10);
+  }
+
+  calAge() {
+    const age = moment(new Date()).diff(moment(this.ultDate), 'years');
+    return age;
+  }
+
+  createLink() {
+    this.user.controls.phone.setValue(this.prevPhone + this.auxPhone);
+  }
+
+  clearForm() {
+    this.user.controls.firstname.setValue('');
+    this.user.controls.lastname.setValue('');
+    this.user.controls.phone.setValue('');
+    this.user.controls.birthdate.setValue('');
+    this.user.controls.address.setValue('');
+    this.user.controls.workAreaid.setValue('0');
+    this.user.controls.email.setValue('');
+    this.user.controls.password.setValue('');
+  }
+
   private cancel(): void {
     this.showMessage.showCancelAlert(
-      "¿Esta seguro que no desea registrar la publicacion?",
+      "¿Está seguro que desea cancelar su registro?",
       ""
     );
   }
