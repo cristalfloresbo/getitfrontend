@@ -3,5 +3,5 @@ export default [
   { value: "address", name: "Ubicación" },
   { value: "requiredTime", name: "Tiempo Requerido" },
   { value: "fee", name: "Honorarios" },
-  { value: "workArea", name: "Área de Trabajo" },
+  { value: "workArea", name: "Área de Trabajo" }
 ];
