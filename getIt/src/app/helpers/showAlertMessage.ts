@@ -33,7 +33,7 @@ export class ShowAlertMessage {
       position: "center",
       icon: "error",
       title: message,
-      text: text,
+      text,
     });
   }
 

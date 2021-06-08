@@ -1,29 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 import data from "../../helpers/searchOptions";
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.page.html',
-  styleUrls: ['./search.page.scss'],
+  selector: "app-search",
+  styleUrls: ["./search.page.scss"],
+  templateUrl: "./search.page.html",
 })
-export class SearchPage implements OnInit {
-
+export class SearchPage {
   public routes = {
-    email: 'getit/search/by-email',
-    address: 'getit/search',
-    requiredTime: 'getit/search',
-    fee: 'getit/home'
+    address: "getit/search/by-address",
+    email: "getit/search/by-email",
+    fee: "getit/search/by-fee",
+    requiredTime: "getit/search/by-required-time",
+    workArea: "getit/search/by-work-area",
   };
 
   public searchOptions = data;
-  constructor(private router: Router) { }
-
-  ngOnInit() {
-  }
+  constructor(private router: Router) {}
 
   public redirectTo(event: CustomEvent) {
     this.router.navigate([this.routes[event.detail.value]]);
   }
-
 }

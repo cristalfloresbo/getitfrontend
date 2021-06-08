@@ -9,7 +9,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "fix-ts": "tslint-auto-fix"
   },
   "private": true,
   "dependencies": {
@@ -24,8 +25,11 @@
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^4.7.1",
     "core-js": "^2.5.4",
+    "moment": "^2.29.1",
     "rxjs": "~6.5.1",
+    "sweetalert2": "^11.0.16",
     "tslib": "^1.9.0",
+    "tslint-auto-fix": "^1.0.0",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
@@ -49,9 +53,13 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
+    "prettier": "^2.3.0",
+    "prettier-eslint": "^12.0.0",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.3.0",
     "typescript": "~3.4.3"
   },
   "description": "An Ionic project"

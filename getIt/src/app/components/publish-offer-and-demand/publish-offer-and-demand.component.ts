@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ApiService } from "src/app/api-service/api.service";
+import { ShowAlertMessage } from "src/app/helpers/showAlertMessage";
 import { Publication } from "src/app/models/publication.model";
 import { WorkArea } from "src/app/models/workArea.model";
-import { ShowAlertMessage } from "src/app/helpers/showAlertMessage";
 
 @Component({
   selector: "app-publish-offer-and-demand",
@@ -12,7 +12,7 @@ import { ShowAlertMessage } from "src/app/helpers/showAlertMessage";
 })
 export class PublishOfferAndDemandComponent implements OnInit {
   // @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
-  publicationForm: FormGroup;
+  public publicationForm: FormGroup;
   public workareas: WorkArea[] = [];
   private publication: Publication;
   private USER_ID = 1;
@@ -23,16 +23,28 @@ export class PublishOfferAndDemandComponent implements OnInit {
     private apiService: ApiService
   ) {}
 
-  ngOnInit() {
+  public ngOnInit() {
     this.createPublicationForm();
     this.loadWorkAreas();
   }
 
-  async loadWorkAreas() {
+  public async loadWorkAreas() {
     await this.apiService
       .getAll<WorkArea[]>("workareas")
       .subscribe((response) => {
         this.workareas = response;
+      });
+  }
+
+  public async savePublication() {
+    this.publication = this.publicationForm.value as Publication;
+    this.publication.userId = this.USER_ID;
+    await this.apiService
+      .post(`/publishing`, this.publication)
+      .subscribe((results) => {
+        this.showMessage.showSuccessAlert(
+          `publication with id: ${results} registered successfully!`
+        );
       });
   }
 
@@ -52,18 +64,6 @@ export class PublishOfferAndDemandComponent implements OnInit {
         ],
       ],
     });
-  }
-
-  async savePublication() {
-    this.publication = this.publicationForm.value as Publication;
-    this.publication.userId = this.USER_ID;
-    await this.apiService
-      .post(`/publishing`, this.publication)
-      .subscribe((results) => {
-        this.showMessage.showSuccessAlert(
-          `publication with id: ${results} registered successfully!`
-        );
-      });
   }
 
   private cancel(): void {

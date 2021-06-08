@@ -17,7 +17,6 @@ export class RegisterComponent implements OnInit {
   public defaultDate = "";
   public mDate = this.minDate();
   public mxDate = this.maxDate();
-  public prevPhone = 'https://wa.me/591';
   public defaultNum = 0;
   public auxPhone = "";
   private showMessage = new ShowAlertMessage();
@@ -28,31 +27,27 @@ export class RegisterComponent implements OnInit {
     private apiService: ApiService
   ) {}
 
-  ngOnInit() {
-    this.loadWorkAreas();
-  }
-
   user = this.formBuilder.group({
     firstname: [
-      "",
+      '',
       [
-        Validators.required, 
-        Validators.minLength(3), 
+        Validators.required,
+        Validators.minLength(3),
         Validators.maxLength(50)
       ],
     ],
     lastname: [
-      "",
+      '',
       [
-        Validators.required, 
-        Validators.minLength(3), 
+        Validators.required,
+        Validators.minLength(3),
         Validators.maxLength(50)
       ],
     ],
     phone: [
-      "", 
+      '',
       [
-        Validators.required, 
+        Validators.required,
         Validators.min(60000000),
         Validators.max(79999999)
       ]
@@ -64,20 +59,20 @@ export class RegisterComponent implements OnInit {
       ],
     ],
     address: [
-      "",
+      '',
       [
-        Validators.minLength(10), 
+        Validators.minLength(10),
         Validators.maxLength(50)
       ],
     ],
     workAreaId: [
-      "0", 
+      '0',
     ],
     score: [
       this.defaultNum
     ],
     email: [
-      "",
+      '',
       [
         Validators.required,
         Validators.pattern(
@@ -97,6 +92,10 @@ export class RegisterComponent implements OnInit {
     ],
   });
 
+  ngOnInit() {
+    this.loadWorkAreas();
+  }
+
   async loadWorkAreas() {
     await this.apiService
       .getAll<WorkArea[]>("/workareas")
@@ -111,9 +110,7 @@ export class RegisterComponent implements OnInit {
       this.createLink();
       this.apiService.post('/register-user', this.user.value).subscribe(
         (idUser: number) => {
-          this.showMessage.showSuccessAlert(
-            '¡Se registró exitosamente!'
-          );
+          this.showMessage.showSuccessAlert('¡Se registró exitosamente!');
           window.location.href = '/getit';
         },
         (error: HttpErrorResponse) => {
@@ -154,7 +151,7 @@ export class RegisterComponent implements OnInit {
   }
 
   createLink() {
-    this.user.controls.phone.setValue(this.prevPhone + this.auxPhone);
+    this.user.controls.phone.setValue('https://wa.me/591' + this.auxPhone);
   }
 
   clearForm() {

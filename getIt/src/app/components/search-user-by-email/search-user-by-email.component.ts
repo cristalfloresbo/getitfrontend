@@ -1,35 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import { Users } from '../../models/user.model';
+import { Component, OnInit } from "@angular/core";
 import { ApiService } from "src/app/api-service/api.service";
-import { Router } from "@angular/router";
+import { Users } from "../../models/user.model";
 
 @Component({
-  selector: 'app-search-user-by-email',
-  templateUrl: './search-user-by-email.component.html',
-  styleUrls: ['./search-user-by-email.component.scss'],
+  selector: "app-search-user-by-email",
+  styleUrls: ["./search-user-by-email.component.scss"],
+  templateUrl: "./search-user-by-email.component.html",
 })
 export class SearchUserByEmailComponent implements OnInit {
-	public users: Users[] = [];
-	public txtToSearch: String = "";
+  public users: Users[] = [];
+  public txtToSearch: String = "";
 
-	constructor(private apiService: ApiService, private router: Router) {}
+  constructor(private apiService: ApiService) {}
 
-	ngOnInit() {
-		this.loadUsers();
-	}
+  public ngOnInit() {
+    this.loadUsers();
+  }
 
-	async loadUsers() {
-		await this.apiService
-		  .getAll<Users[]>("users")
-		  .subscribe((response) => {
-			this.users = response;
-			console.log('fvdf', this.users );
-			
-		  });
-	  }
+  public async loadUsers() {
+    await this.apiService.getAll<Users[]>("users").subscribe((response) => {
+      this.users = response;
+    });
+  }
 
-	search(event) {
-		this.txtToSearch = event.detail.value;
-	}
-
+  public search(event) {
+    this.txtToSearch = event.detail.value;
+  }
 }
