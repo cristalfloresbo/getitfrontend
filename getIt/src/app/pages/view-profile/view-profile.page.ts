@@ -34,18 +34,18 @@ export class ViewProfilePage implements OnInit {
   public getUser() {
     this.apiService.getById<UserModel>('user', this.route.snapshot.params.id).subscribe(response => {
       this.user = response;
-      this.publications = this.user.list;
+      this.getPublications();
       this.age = moment(new Date()).diff(moment(this.user.birthdate), 'years');
     }, (error: HttpErrorResponse) => {
       this.showAlertMessage.showErrorAlert(error.error.message_error);
     });
   }
 
-  public async viewPublication( id: number) {
+  public async viewPublication( publication: any) {
     const modal = await this.modalCtrl.create({
       component: ViewPublicationComponent,
       componentProps: {
-        publicationId: id
+        publicationList: publication
       }
     });
     await modal.present();
@@ -58,6 +58,14 @@ export class ViewProfilePage implements OnInit {
       response;
     }, (error: HttpErrorResponse) => {
       this.showAlertMessage.showErrorAlert(error.name);
+    });
+  }
+
+  public getPublications() {
+    this.apiService.getById<any>('photos-gallery', this.route.snapshot.params.id).subscribe(response => {
+      this.publications = response;
+    }, (error: HttpErrorResponse) => {
+      this.showAlertMessage.showErrorAlert(error.error.message_error);
     });
   }
 }

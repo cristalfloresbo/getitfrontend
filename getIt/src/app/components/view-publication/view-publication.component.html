@@ -1,9 +1,9 @@
 <ion-content>
   <ion-slides pager>
-    <ion-slide *ngFor="let image of images">
+    <ion-slide *ngFor="let publication of publicationList">
       <ion-card mode="ios">
         <ion-button class="close" (click)="close()" fill=“clear”>Cerrar</ion-button>
-        <ion-img src="/assets/images/image3.jpg"></ion-img>
+        <ion-img [src]="'data:image/*;base64,' + publication.image"></ion-img>
         <div class="description">
           <b>{{createdAt}}</b>
           <p>{{publication?.description}}</p>
