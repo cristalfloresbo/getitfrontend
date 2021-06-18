@@ -1,4 +1,5 @@
 export interface Rating {
-  raterUserId: number;
-  rating: number;
+  ratedUser: number;
+  raterUser: number;
+  score: number;
 }

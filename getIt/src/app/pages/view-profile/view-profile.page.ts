@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import * as moment from 'moment';
 import { ApiService } from 'src/app/api-service/api.service';
+import { RatingComponent } from 'src/app/components/rating/rating.component';
 import { ViewPublicationComponent } from 'src/app/components/view-publication/view-publication.component';
 import { ShowAlertMessage } from 'src/app/helpers/showAlertMessage';
 import { Rating } from 'src/app/models/rating.model';
@@ -16,12 +17,9 @@ import { UserModel } from 'src/app/models/user.model';
 })
 export class ViewProfilePage implements OnInit {
 
-  public user: UserModel;
+  public user;
+  public rating;
   public age: number;
-  public ratingModel: Rating = {
-    raterUserId: 1,
-    rating: 0
-  };
   public publications;
   public showAlertMessage = new ShowAlertMessage();
 
@@ -34,6 +32,7 @@ export class ViewProfilePage implements OnInit {
   public getUser() {
     this.apiService.getById<UserModel>('user', this.route.snapshot.params.id).subscribe(response => {
       this.user = response;
+      this.getRating();
       this.getPublications();
       this.age = moment(new Date()).diff(moment(this.user.birthdate), 'years');
     }, (error: HttpErrorResponse) => {
@@ -51,11 +50,25 @@ export class ViewProfilePage implements OnInit {
     await modal.present();
   }
 
-  public rating(event) {
-    this.ratingModel.rating = event.detail.value;
-    this.apiService.put('rating', this.user.id, this.ratingModel).subscribe(response => {
-      // tslint:disable-next-line:no-unused-expression
-      response;
+  public async rateUser() {
+    const modal = await this.modalCtrl.create({
+      component: RatingComponent,
+      componentProps: {
+        ratedUser: this.route.snapshot.params.id
+      }
+    });
+    await modal.present();
+  }
+
+
+  public getRating() {
+    this.apiService.getById<Array<Rating>>('user-rating', this.route.snapshot.params.id).subscribe(response => {
+      let sum = 0;
+      // tslint:disable-next-line:forin
+      for (const index in response) {
+        sum += response[index].score;
+      }
+      this.rating = sum / response.length;
     }, (error: HttpErrorResponse) => {
       this.showAlertMessage.showErrorAlert(error.name);
     });

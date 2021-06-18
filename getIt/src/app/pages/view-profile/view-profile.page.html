@@ -1,7 +1,7 @@
 <ion-content>
   <div class="email">
     <ion-avatar class="profile-photo">
-      <img src="/assets/images/profile-photo.jpg">
+      <ion-img [src]="'data:image/*;base64,' + user?.image"></ion-img>
     </ion-avatar>
     <b>{{user?.email}}</b>
   </div>
@@ -12,14 +12,15 @@
     <p>Edad: {{age}}</p>
     <p>Dirección: {{user?.address}}</p>
   </div>
-  <div class="rating">
-    <ion-range (ionChange)="rating($event)"
+  <div class="rating" (click)="rateUser()">
+    <ion-range
       min="0"
       max="5"
       pin="true"
       snaps="true"
       color="primary"
-      value={{user?.score}}>
+      disabled="true"
+      value={{rating}}>
       <ion-icon size="small" slot="start" name="star" color="primary"></ion-icon>
       <ion-icon slot="end" name="star" color="primary"></ion-icon>
     </ion-range>
