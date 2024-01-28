@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "tslint:latest",
+    "tslint-config-prettier",
+	"tslint-plugin-prettier"
+  ],
+  "scripts": {
+    "tslint-check": "tslint-config-prettier-check ./tslint.json"
+  },
+  "rulesDirectory": ["tslint-plugin-prettier"],
+  "rules": {
+    "prettier": true
+  }
+}
